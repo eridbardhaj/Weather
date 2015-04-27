@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		E8B258AF1AEEBE9E00195F02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */; };
-		E8B258B11AEEBE9E00195F02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258B01AEEBE9E00195F02 /* ViewController.swift */; };
-		E8B258B41AEEBE9E00195F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B258B21AEEBE9E00195F02 /* Main.storyboard */; };
 		E8B258B61AEEBE9E00195F02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B258B51AEEBE9E00195F02 /* Images.xcassets */; };
 		E8B258B91AEEBE9E00195F02 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8B258B71AEEBE9E00195F02 /* LaunchScreen.xib */; };
 		E8B258C51AEEBE9F00195F02 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258C41AEEBE9F00195F02 /* WeatherTests.swift */; };
+		E8B258D91AEEC16200195F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B258D81AEEC16100195F02 /* Main.storyboard */; };
+		E8B258DF1AEEC57500195F02 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8B258DB1AEEC57500195F02 /* ProximaNova-Bold.otf */; };
+		E8B258E01AEEC57500195F02 /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8B258DC1AEEC57500195F02 /* ProximaNova-Light.otf */; };
+		E8B258E11AEEC57500195F02 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8B258DD1AEEC57500195F02 /* ProximaNova-Regular.otf */; };
+		E8B258E21AEEC57500195F02 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8B258DE1AEEC57500195F02 /* ProximaNova-Semibold.otf */; };
+		E8B258E61AEEC5DE00195F02 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258E51AEEC5DE00195F02 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +33,17 @@
 		E8B258A91AEEBE9E00195F02 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B258AD1AEEBE9E00195F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8B258B01AEEBE9E00195F02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E8B258B31AEEBE9E00195F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8B258B51AEEBE9E00195F02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E8B258B81AEEBE9E00195F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E8B258BE1AEEBE9F00195F02 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B258C31AEEBE9F00195F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B258C41AEEBE9F00195F02 /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
+		E8B258D81AEEC16100195F02 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Weather/Classes/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		E8B258DB1AEEC57500195F02 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		E8B258DC1AEEC57500195F02 /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		E8B258DD1AEEC57500195F02 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		E8B258DE1AEEC57500195F02 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		E8B258E51AEEC5DE00195F02 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,22 +85,12 @@
 		E8B258AB1AEEBE9E00195F02 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */,
-				E8B258B01AEEBE9E00195F02 /* ViewController.swift */,
-				E8B258B21AEEBE9E00195F02 /* Main.storyboard */,
-				E8B258B51AEEBE9E00195F02 /* Images.xcassets */,
-				E8B258B71AEEBE9E00195F02 /* LaunchScreen.xib */,
-				E8B258AC1AEEBE9E00195F02 /* Supporting Files */,
+				E8B258D11AEEBEC600195F02 /* AppDelegate */,
+				E8B258D01AEEBEBD00195F02 /* Other Sources */,
+				E8B258CF1AEEBEB500195F02 /* Resources */,
+				E8B258CE1AEEBEB000195F02 /* Classes */,
 			);
 			path = Weather;
-			sourceTree = "<group>";
-		};
-		E8B258AC1AEEBE9E00195F02 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E8B258AD1AEEBE9E00195F02 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E8B258C11AEEBE9F00195F02 /* WeatherTests */ = {
@@ -109,7 +107,117 @@
 			children = (
 				E8B258C31AEEBE9F00195F02 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8B258CE1AEEBEB000195F02 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258E31AEEC5B800195F02 /* Utils */,
+				E8B258D71AEEBF6600195F02 /* Controllers */,
+				E8B258D61AEEBF6200195F02 /* Models */,
+				E8B258D51AEEBF5D00195F02 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E8B258CF1AEEBEB500195F02 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258DA1AEEC55A00195F02 /* Fonts */,
+				E8B258D21AEEBED500195F02 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E8B258D01AEEBEBD00195F02 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258D41AEEBF4C00195F02 /* LaunchScreen */,
+				E8B258D31AEEBF3600195F02 /* plist */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		E8B258D11AEEBEC600195F02 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		E8B258D21AEEBED500195F02 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258B51AEEBE9E00195F02 /* Images.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E8B258D31AEEBF3600195F02 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258AD1AEEBE9E00195F02 /* Info.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
+		E8B258D41AEEBF4C00195F02 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258B71AEEBE9E00195F02 /* LaunchScreen.xib */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		E8B258D51AEEBF5D00195F02 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258D81AEEC16100195F02 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E8B258D61AEEBF6200195F02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E8B258D71AEEBF6600195F02 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E8B258DA1AEEC55A00195F02 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258DB1AEEC57500195F02 /* ProximaNova-Bold.otf */,
+				E8B258DC1AEEC57500195F02 /* ProximaNova-Light.otf */,
+				E8B258DD1AEEC57500195F02 /* ProximaNova-Regular.otf */,
+				E8B258DE1AEEC57500195F02 /* ProximaNova-Semibold.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		E8B258E31AEEC5B800195F02 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258E41AEEC5C200195F02 /* Constants */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		E8B258E41AEEC5C200195F02 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E8B258E51AEEC5DE00195F02 /* Constants.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +300,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8B258B41AEEBE9E00195F02 /* Main.storyboard in Resources */,
+				E8B258E01AEEC57500195F02 /* ProximaNova-Light.otf in Resources */,
+				E8B258D91AEEC16200195F02 /* Main.storyboard in Resources */,
+				E8B258DF1AEEC57500195F02 /* ProximaNova-Bold.otf in Resources */,
 				E8B258B91AEEBE9E00195F02 /* LaunchScreen.xib in Resources */,
 				E8B258B61AEEBE9E00195F02 /* Images.xcassets in Resources */,
+				E8B258E11AEEC57500195F02 /* ProximaNova-Regular.otf in Resources */,
+				E8B258E21AEEC57500195F02 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +324,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8B258B11AEEBE9E00195F02 /* ViewController.swift in Sources */,
 				E8B258AF1AEEBE9E00195F02 /* AppDelegate.swift in Sources */,
+				E8B258E61AEEC5DE00195F02 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,20 +348,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E8B258B21AEEBE9E00195F02 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8B258B31AEEBE9E00195F02 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E8B258B71AEEBE9E00195F02 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E8B258B81AEEBE9E00195F02 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,7 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = "Weather/Other Sources/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -350,7 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = "Weather/Other Sources/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -368,7 +473,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WeatherTests/Info.plist;
+				INFOPLIST_FILE = "WeatherTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weather.app/Weather";
@@ -383,7 +488,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WeatherTests/Info.plist;
+				INFOPLIST_FILE = "WeatherTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weather.app/Weather";
@@ -409,6 +514,7 @@
 				E8B258CA1AEEBE9F00195F02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8B258CB1AEEBE9F00195F02 /* Build configuration list for PBXNativeTarget "WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +523,7 @@
 				E8B258CD1AEEBE9F00195F02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
