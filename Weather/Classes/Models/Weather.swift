@@ -20,6 +20,12 @@ enum DegreeType
     case Celvin, Celcius, Fahrenheit, None
 }
 
+//Enum to keep track of Wind Metrics
+enum WindMetrics
+{
+    case MetersPerSecond, KilometersPerHour, None
+}
+
 //MARK: - Main Model
 class Weather: NSObject
 {
@@ -36,6 +42,7 @@ class Weather: NSObject
     var m_pressure: Double
     var m_rain_mm: Double
     
+    //Init the default model
     override init()
     {
         m_is_current_location = false
