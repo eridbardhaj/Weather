@@ -223,6 +223,7 @@
 		E8B258E31AEEC5B800195F02 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E8D219D01AF0256D0021F243 /* Networking */,
 				878A60081AEFCEEE004FFB39 /* Utils */,
 				E8B258E41AEEC5C200195F02 /* Constants */,
 			);
@@ -235,6 +236,13 @@
 				E8B258E51AEEC5DE00195F02 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		E8D219D01AF0256D0021F243 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
