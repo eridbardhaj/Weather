@@ -10,6 +10,23 @@ import UIKit
 
 class DataManager: NSObject
 {
+    //Singleton pattern
+    class var shared: DataManager
+    {
+        struct Static
+        {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: DataManager? = nil
+        }
+        
+        dispatch_once(&Static.onceToken)
+            {
+                Static.instance = DataManager()
+        }
+        return Static.instance!
+    }
+    
+    
     //MARK: - Custom getters and setters
     var city : String
     {
@@ -95,22 +112,4 @@ class DataManager: NSObject
             defaults!.synchronize()
         }
     }
-    
-    //Singleton pattern
-    class var shared: DataManager
-    {
-        struct Static
-        {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: DataManager? = nil
-        }
-        
-        dispatch_once(&Static.onceToken)
-        {
-            Static.instance = DataManager()
-        }
-        return Static.instance!
-    }
-    
-   
 }

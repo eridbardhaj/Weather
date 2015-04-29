@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (1.2.1)
+  - Argo (1.0.0):
+    - Box (~> 1.2)
+    - Runes (~> 1.2)
+  - Box (1.2.0)
+  - Runes (1.2.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.2)
+  - Argo
+
+SPEC CHECKSUMS:
+  Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
+  Argo: db42a710ec5b4826fd7594a3c9b3437ca138b63e
+  Box: 3345df1dee5c8cd639a663e368427c51f931d095
+  Runes: 90c9bba2be981c3777ac490aea0fc0c1acff0f97
+
+COCOAPODS: 0.36.3

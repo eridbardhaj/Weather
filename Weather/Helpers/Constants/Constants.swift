@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ErrorType
+{
+    case ErrorNetwork, ErrorServer, ErrorGPS
+}
+
 class Constants: NSObject
 {
     class Colors
@@ -38,6 +43,14 @@ class Constants: NSObject
         class func appGroupName() -> String
         {
             return "com.strv"
+        }
+    }
+    
+    class URLS
+    {
+        class func weatherBaseURL() -> String
+        {
+            return "api.openweathermap.org/data/2.5/weather?"
         }
     }
 }
