@@ -11,37 +11,134 @@ import Alamofire
 
 class WeatherNetwork: NSObject
 {
+    //MARK: - Current Weather Calls
+    /**
+    Get current weather by city name
     
-    class func getCurrentWeatherByName(city: String, response: (Bool, AnyObject) -> (Void))
+    :param: city            City that you want to look up for
+    :param: responseHandler Closure that returns errortype and the object that was received by the API
+    */
+    class func getCurrentWeatherByName(city: String, responseHandler: (ErrorType, AnyObject) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())q=\(city)"
+        let urlString = "\(Constants.URLS.weatherBaseURL())weather?q=\(city)"
         
         //Make Request and return callback
         self.makeRequest(urlString, responseCallBack:
         {
             (error, object) -> (Void) in
             
+            if (!error)
+            {
+                responseHandler(ErrorType.None, object)
+            }
+            else
+            {
+                responseHandler(ErrorType.Server, object)
+            }
         })
     }
     
+    /**
+    Get current weather by Location Coordinates
     
-    //Universal caller
-    class func makeRequest(urlString: String, responseCallBack: (Bool, AnyObject) -> (Void))
+    :param: lat             Latitude of your location
+    :param: lng             Longitude of your location
+    :param: responseHandler Closure that returns errortype and the object that was received by the API
+    */
+    class func getCurrentWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject) -> (Void))
     {
-        Alamofire.request(.GET, urlString, parameters: nil)
-            .response
+        //Create URL String
+        let urlString = "\(Constants.URLS.weatherBaseURL())weather?lat=\(lat)&lon=\(lng)"
+        
+        //Make Request and return callback
+        self.makeRequest(urlString, responseCallBack:
             {
-                (request, response, data, error) in
+                (error, object) -> (Void) in
                 
-                if (error != nil)
+                if (!error)
                 {
-                    responseCallBack(false, data!)
+                    responseHandler(ErrorType.None, object)
                 }
                 else
                 {
-                    responseCallBack(true, data!)
+                    responseHandler(ErrorType.Server, object)
                 }
+        })
+    }
+    
+    //MARK: - Forecast Calls
+    /**
+    Get forecast weather data for one location by searching with a city name
+    
+    :param: city            City that you want to look up for
+    :param: responseHandler Closure that returns errortype and the object that was received by the API
+    */
+    class func getForecastWeatherByName(city: String, responseHandler: (ErrorType, AnyObject) -> (Void))
+    {
+        //Create URL String
+        let urlString = "\(Constants.URLS.weatherBaseURL())forecast?q=\(city)"
+        
+        //Make Request and return callback
+        self.makeRequest(urlString, responseCallBack:
+            {
+                (error, object) -> (Void) in
+                
+                if (!error)
+                {
+                    responseHandler(ErrorType.None, object)
+                }
+                else
+                {
+                    responseHandler(ErrorType.Server, object)
+                }
+        })
+    }
+    
+    /**
+    Get forecast weather data for one location by searching with coordinates
+    
+    :param: lat             Latitude of your location
+    :param: lng             Longitude of your location
+    :param: responseHandler Closure that returns errortype and the object that was received by the API
+    */
+    class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject) -> (Void))
+    {
+        //Create URL String
+        let urlString = "\(Constants.URLS.weatherBaseURL())forecast?lat=\(lat)&lon=\(lng)"
+        
+        //Make Request and return callback
+        self.makeRequest(urlString, responseCallBack:
+            {
+                (error, object) -> (Void) in
+                
+                if (!error)
+                {
+                    responseHandler(ErrorType.None, object)
+                }
+                else
+                {
+                    responseHandler(ErrorType.Server, object)
+                }
+        })
+    }
+    
+    //MARK: - Helpers
+    //Universal caller
+    private class func makeRequest(urlString: String, responseCallBack: (Bool, AnyObject) -> (Void))
+    {
+        Alamofire.request(.GET, urlString, parameters: nil).responseJSON(options: NSJSONReadingOptions(0))
+        {
+            (urlRequest, urlResponse, object, error) -> Void in
+            
+            if (error != nil)
+            {
+                responseCallBack(false, object!)
+            }
+            else
+            {
+                responseCallBack(true, object!)
+            }
         }
     }
     

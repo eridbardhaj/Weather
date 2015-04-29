@@ -10,7 +10,7 @@ import UIKit
 
 enum ErrorType
 {
-    case ErrorNetwork, ErrorServer, ErrorGPS
+    case Network, Server, GPS, None
 }
 
 class Constants: NSObject
@@ -50,7 +50,7 @@ class Constants: NSObject
     {
         class func weatherBaseURL() -> String
         {
-            return "api.openweathermap.org/data/2.5/weather?"
+            return "api.openweathermap.org/data/2.5/"
         }
     }
 }

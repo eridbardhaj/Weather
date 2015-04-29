@@ -49,13 +49,9 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
-  install_framework 'Argo.framework'
-  install_framework 'Box.framework'
-  install_framework 'Runes.framework'
+  install_framework 'ObjectMapper.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
-  install_framework 'Argo.framework'
-  install_framework 'Box.framework'
-  install_framework 'Runes.framework'
+  install_framework 'ObjectMapper.framework'
 fi
