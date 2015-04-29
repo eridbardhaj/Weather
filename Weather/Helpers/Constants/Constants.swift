@@ -32,4 +32,12 @@ class Constants: NSObject
             return UIColor.whiteColor()
         }
     }
+    
+    class Defaults
+    {
+        class func appGroupName() -> String
+        {
+            return "com.strv"
+        }
+    }
 }
