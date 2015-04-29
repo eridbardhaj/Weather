@@ -12,7 +12,7 @@ import ObjectMapper
 //Enum to keep track of weather condition
 enum WeatherCondition
 {
-    case Windy, Cloudy, Rainy, Sunny, None
+    case Thunderstorm, Cloudy, Rainy, Sunny, Snowy, Foggy, None
 }
 
 //Enum to keep track of DegreeType
@@ -30,47 +30,39 @@ enum WindMetrics
 //MARK: - Main Model
 class Weather: Mappable
 {
-    var m_is_current_location: Bool
-    var m_weather_icon: WeatherCondition
-    var m_coordinate: Coordinate
-    var m_city: String
-    var m_state: String
-    var m_degree: Double
-    var m_degree_type: DegreeType
-    var m_weather_condition: WeatherCondition
-    var m_wind: Wind
-    var m_humidity: Double
-    var m_pressure: Double
-    var m_rain_mm: Double
+    var m_weatherCondition: Double?
+    var m_weatherDescription: String?
+    var m_lat: Double?
+    var m_lng: Double?
+    var m_city: String?
+    var m_state: String?
+    var m_degree: Double?
+    var m_windDirection: String?
+    var m_windSpeed: Double?
+    var m_humidity: Double?
+    var m_pressure: Double?
+//    var m_precipitation: Double?
     
-    required init?(_ map: Map) {
+    required init?(_ map: Map)
+    {
         mapping(map)
     }
     
-    // Mappable
-    func mapping(map: Map) {
-        username    <- map["username"]
-        age         <- map["age"]
-        weight      <- map["weight"]
-        array       <- map["arr"]
-        dictionary  <- map["dict"]
-        bestFriend  <- map["best_friend"]
-        friends     <- map["friends"]
-        birthday    <- (map["birthday"], DateTransform())
+    //MARK: - Mappable
+    func mapping(map: Map)
+    {
+        m_weatherCondition    <- map["weather.$0.id"]
+        m_weatherDescription  <- map["weather.$0.description"]
+        m_lat                 <- map["coord.lat"]
+        m_lng                 <- map["coord.lon"]
+        m_city                <- map["name"]
+        m_state               <- map["sys.country"]
+        m_degree              <- map["main.temp"]
+        m_windDirection       <- map["wind.deg"]
+        m_windSpeed           <- map["wind.speed"]
+        m_humidity            <- map["main.humidity"]
+        m_pressure            <- map["main.pressure"]
+//        m_precipitation       <- map["username"]
     }
 }
 
-//MARK: - Helper Models
-class Wind
-{
-    var speed: Double = 0.0
-    var type: String = ""
-    var direction: String = ""
-}
-
-class Coordinate
-{
-    var lat: Double = 0.0
-    var lng: Double = 0.0
-
-}

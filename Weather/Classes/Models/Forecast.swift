@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Forecast: NSObject
+class Forecast: Mappable
 {
-    var m_weatherCondition: WeatherCondition
-    var m_day: String
-    var m_degree: Double
+    var m_weatherCondition: WeatherCondition = WeatherCondition.None
+    var m_day: String = ""
+    var m_degree: Double = 0.0
     
-    //Init the default values
-    override init()
+    
+    required init?(_ map: Map)
     {
-        m_weatherCondition = WeatherCondition.None
-        m_day = ""
-        m_degree = 0.0
+        mapping(map)
+    }
+    
+    //MARK: - Mappable
+    func mapping(map: Map)
+    {
+        m_weatherCondition    <- map["username"]
+        m_day                 <- map["username"]
+        m_degree              <- map["username"]
     }
 }
