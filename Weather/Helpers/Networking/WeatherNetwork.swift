@@ -19,10 +19,10 @@ class WeatherNetwork: NSObject
     :param: city            City that you want to look up for
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getCurrentWeatherByName(city: String, responseHandler: (ErrorType, AnyObject) -> (Void))
+    class func getCurrentWeatherByName(city: String, responseHandler: (ErrorType, AnyObject?) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())weather?q=\(city)"
+        let urlString = "\(Constants.URLS.weatherBaseURL())weather?q=\(city)APPID=9d8140ec7e949399dee6b61b5607db20"
         
         //Make Request and return callback
         self.makeRequest(urlString, responseCallBack:
@@ -31,11 +31,13 @@ class WeatherNetwork: NSObject
             
             if (!error)
             {
-                responseHandler(ErrorType.None, object)
+                let weather = Mapper<Weather>().map(object)
+                
+                responseHandler(ErrorType.None, weather!)
             }
             else
             {
-                responseHandler(ErrorType.Server, object)
+                responseHandler(ErrorType.Server, nil)
             }
         })
     }
@@ -47,7 +49,7 @@ class WeatherNetwork: NSObject
     :param: lng             Longitude of your location
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getCurrentWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject) -> (Void))
+    class func getCurrentWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject?) -> (Void))
     {
         //Create URL String
         let urlString = "\(Constants.URLS.weatherBaseURL())weather?lat=\(lat)&lon=\(lng)"
@@ -109,7 +111,7 @@ class WeatherNetwork: NSObject
     :param: lng             Longitude of your location
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject) -> (Void))
+    class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject?) -> (Void))
     {
         //Create URL String
         let urlString = "\(Constants.URLS.weatherBaseURL())forecast?lat=\(lat)&lon=\(lng)"

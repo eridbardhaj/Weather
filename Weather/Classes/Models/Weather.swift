@@ -12,7 +12,7 @@ import ObjectMapper
 //Enum to keep track of weather condition
 enum WeatherCondition
 {
-    case Windy, Cloudy, Rainy, Sunny, None
+    case Thunderstorm, Cloudy, Rainy, Sunny, Snowy, Foggy, None
 }
 
 //Enum to keep track of DegreeType
@@ -60,17 +60,3 @@ class Weather: NSObject
 //    }
 }
 
-//MARK: - Helper Models
-class Wind
-{
-    var speed: Double = 0.0
-    var type: String = ""
-    var direction: String = ""
-}
-
-class Coordinate
-{
-    var lat: Double = 0.0
-    var lng: Double = 0.0
-
-}
