@@ -346,18 +346,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-U1-3QI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-U1-3QI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="81" id="EBx-jS-I5d" customClass="ForecastTableViewCell" customModule="Weather" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="81" id="EBx-jS-I5d" customClass="ForecastTableViewCell" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EBx-jS-I5d" id="rHi-8P-DY2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tod-sun-big" translatesAutoresizingMaskIntoConstraints="NO" id="pAp-iA-7iX">
-                                                    <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                                    <rect key="frame" x="15" y="15" width="50" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3YM-t1-S7Z"/>
                                                     </constraints>
@@ -372,7 +372,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20º" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wds-jZ-8ur">
-                                                    <rect key="frame" x="212" y="15" width="93" height="50"/>
+                                                    <rect key="frame" x="212" y="15" width="93" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="93" id="UXh-iA-tWN"/>
                                                     </constraints>
@@ -381,7 +381,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-0H-RFg">
-                                                    <rect key="frame" x="80" y="40" width="117" height="21"/>
+                                                    <rect key="frame" x="80" y="41" width="117" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="V2D-Vn-7Fb"/>
                                                     </constraints>
@@ -389,6 +389,12 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e7s-L7-5Bo">
+                                                    <rect key="frame" x="80" y="80" width="240" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Hmt-Yg-tI1"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="pAp-iA-7iX" secondAttribute="bottom" constant="15" id="1rB-f4-aXa"/>
@@ -396,8 +402,11 @@
                                                 <constraint firstItem="Mzx-0H-RFg" firstAttribute="bottom" secondItem="pAp-iA-7iX" secondAttribute="bottom" constant="-4" id="3Df-5s-RLV"/>
                                                 <constraint firstItem="Mzx-0H-RFg" firstAttribute="leading" secondItem="pAp-iA-7iX" secondAttribute="trailing" constant="15" id="BcC-cG-Zk5"/>
                                                 <constraint firstItem="xgC-Pb-Xdp" firstAttribute="leading" secondItem="pAp-iA-7iX" secondAttribute="trailing" constant="15" id="D36-H2-QuX"/>
+                                                <constraint firstAttribute="bottom" secondItem="e7s-L7-5Bo" secondAttribute="bottom" id="Fn3-hw-Xb2"/>
+                                                <constraint firstAttribute="trailing" secondItem="e7s-L7-5Bo" secondAttribute="trailing" id="IkS-To-0Sz"/>
                                                 <constraint firstItem="Wds-jZ-8ur" firstAttribute="leading" secondItem="xgC-Pb-Xdp" secondAttribute="trailing" constant="15" id="RMf-fN-ij3"/>
                                                 <constraint firstItem="xgC-Pb-Xdp" firstAttribute="top" secondItem="pAp-iA-7iX" secondAttribute="top" constant="3" id="SCq-5c-bxM"/>
+                                                <constraint firstItem="Mzx-0H-RFg" firstAttribute="leading" secondItem="e7s-L7-5Bo" secondAttribute="leading" id="WEb-dW-9gR"/>
                                                 <constraint firstItem="pAp-iA-7iX" firstAttribute="leading" secondItem="rHi-8P-DY2" secondAttribute="leading" constant="15" id="Y3e-1c-viV"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wds-jZ-8ur" secondAttribute="trailing" constant="15" id="aNF-9x-ufX"/>
                                                 <constraint firstItem="pAp-iA-7iX" firstAttribute="top" secondItem="rHi-8P-DY2" secondAttribute="top" constant="15" id="mRy-Bj-Xv7"/>
@@ -429,6 +438,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Paris" id="56j-VB-Wlx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="TPu-U1-3QI" id="Pa2-jx-1dV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odD-Eg-Xuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

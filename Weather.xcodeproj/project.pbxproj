@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		87833CCA1AF241160018B6D8 /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87833CC91AF241160018B6D8 /* ForecastViewModel.swift */; };
 		87833CCC1AF241520018B6D8 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87833CCB1AF241520018B6D8 /* WeatherViewModel.swift */; };
-		878A600A1AEFCF10004FFB39 /* EnumConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A60091AEFCF10004FFB39 /* EnumConversions.swift */; };
+		878A600A1AEFCF10004FFB39 /* ValueTransformUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878A60091AEFCF10004FFB39 /* ValueTransformUtil.swift */; };
 		A899FDA6E13A445514D23AF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0BFCCBF53307C72D0682DE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E8B258AF1AEEBE9E00195F02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */; };
 		E8B258B61AEEBE9E00195F02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B258B51AEEBE9E00195F02 /* Images.xcassets */; };
@@ -47,7 +47,7 @@
 		5C5C647D06DC2050CAD9FFA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		87833CC91AF241160018B6D8 /* ForecastViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForecastViewModel.swift; path = Weather/Classes/ForecastViewModel.swift; sourceTree = SOURCE_ROOT; };
 		87833CCB1AF241520018B6D8 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherViewModel.swift; path = Weather/Classes/WeatherViewModel.swift; sourceTree = SOURCE_ROOT; };
-		878A60091AEFCF10004FFB39 /* EnumConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumConversions.swift; sourceTree = "<group>"; };
+		878A60091AEFCF10004FFB39 /* ValueTransformUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTransformUtil.swift; sourceTree = "<group>"; };
 		E8B258A91AEEBE9E00195F02 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B258AD1AEEBE9E00195F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		878A60081AEFCEEE004FFB39 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				878A60091AEFCF10004FFB39 /* EnumConversions.swift */,
+				878A60091AEFCF10004FFB39 /* ValueTransformUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 				E8B258E61AEEC5DE00195F02 /* Constants.swift in Sources */,
 				E8D219E11AF04BE20021F243 /* DataManager.swift in Sources */,
 				87833CCA1AF241160018B6D8 /* ForecastViewModel.swift in Sources */,
-				878A600A1AEFCF10004FFB39 /* EnumConversions.swift in Sources */,
+				878A600A1AEFCF10004FFB39 /* ValueTransformUtil.swift in Sources */,
 				E8D219D21AF041880021F243 /* WeatherNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

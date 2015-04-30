@@ -21,19 +21,13 @@ class TodayDetailsViewController: UIViewController
     @IBOutlet weak var m_windDirection: UILabel!
     
     //MARK: - Properties
-    var model: Weather = Weather()
+    var model: Weather?
     
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
-        {
-            (error, forecasts) -> (Void) in
-            
-        })
         
     }
 

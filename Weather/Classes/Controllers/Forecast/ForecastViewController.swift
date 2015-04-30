@@ -11,12 +11,22 @@ import UIKit
 class ForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     var dataArray: Array<Forecast> = Array()    //Array which hold our forecast models
+    @IBOutlet weak var tableView: UITableView!
 
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
+        {
+            (error, array) -> (Void) in
+            if error == ErrorType.None
+            {
+                self.dataArray = array
+                self.tableView.reloadData()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +57,7 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return dataArray.count
+        return self.dataArray.count
     }
     
     
