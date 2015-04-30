@@ -50,7 +50,7 @@ class Constants: NSObject
     {
         class func weatherBaseURL() -> String
         {
-            return "api.openweathermap.org/data/2.5/"
+            return "http://api.openweathermap.org/data/2.5/"
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ObjectMapper
 
 class WeatherNetwork: NSObject
 {
@@ -74,7 +75,7 @@ class WeatherNetwork: NSObject
     :param: city            City that you want to look up for
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getForecastWeatherByName(city: String, responseHandler: (ErrorType, AnyObject) -> (Void))
+    class func getForecastWeatherByName(city: String, responseHandler: (ErrorType, Array<Forecast>) -> (Void))
     {
         //Create URL String
         let urlString = "\(Constants.URLS.weatherBaseURL())forecast?q=\(city)"
@@ -86,11 +87,17 @@ class WeatherNetwork: NSObject
                 
                 if (!error)
                 {
-                    responseHandler(ErrorType.None, object)
+                    if let lists: [AnyObject] = object["list"] as? [AnyObject]
+                    {
+                        let forecast: Array<Forecast> = Mapper<Forecast>().mapArray(lists)!
+                        responseHandler(ErrorType.None, forecast)
+                    }
+                    responseHandler(ErrorType.None, [])
+                    
                 }
                 else
                 {
-                    responseHandler(ErrorType.Server, object)
+                    responseHandler(ErrorType.Server, [])
                 }
         })
     }
@@ -109,7 +116,7 @@ class WeatherNetwork: NSObject
         
         //Make Request and return callback
         self.makeRequest(urlString, responseCallBack:
-            {
+        {
                 (error, object) -> (Void) in
                 
                 if (!error)
@@ -127,11 +134,11 @@ class WeatherNetwork: NSObject
     //Universal caller
     private class func makeRequest(urlString: String, responseCallBack: (Bool, AnyObject) -> (Void))
     {
-        Alamofire.request(.GET, urlString, parameters: nil).responseJSON(options: NSJSONReadingOptions(0))
+        Alamofire.request(.GET, urlString, parameters: nil).responseJSON(options: NSJSONReadingOptions.AllowFragments)
         {
             (urlRequest, urlResponse, object, error) -> Void in
             
-            if (error != nil)
+            if (error == nil)
             {
                 responseCallBack(false, object!)
             }

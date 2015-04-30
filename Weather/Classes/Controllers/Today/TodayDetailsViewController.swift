@@ -29,6 +29,12 @@ class TodayDetailsViewController: UIViewController
 
         // Do any additional setup after loading the view.
         
+        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
+        {
+            (error, forecasts) -> (Void) in
+            
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

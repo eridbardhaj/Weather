@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class Forecast: NSObject
+class Forecast: Mappable
 {
-    var m_weatherCondition: WeatherCondition
-    var m_day: String
-    var m_degree: Double
+    var m_temperature: Double = 0.0
+    var m_day: Int = 0
+    var m_weatherType: Int = 0
     
-    //Init the default values
-    override init()
+    
+    required init?(_ map: Map)
     {
-        m_weatherCondition = WeatherCondition.None
-        m_day = ""
-        m_degree = 0.0
+        mapping(map)
     }
+    
+    func mapping(map: Map)
+    {
+        let list = map["list"]
+        var m_weatherArr1: NSArray = NSArray()
+        m_weatherArr1 <- list["weather"]
+        
+        m_weatherType = m_weatherArr1[0].objectForKey("id") as! Int
+        m_temperature    <- list["main.temp"]
+        m_day            <- list["dt"]
+    }
+    
 }

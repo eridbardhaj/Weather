@@ -31,7 +31,13 @@ class ForecastTableViewCell: UITableViewCell
     //MARK: - Cell Configuration
     func configureCell(index: NSIndexPath, model: Forecast)
     {
+        //Using MVVM pattern to reduce code here
+        var forecastVModel = ForecastViewModel(model: model)
         
+        self.m_weatherIcon.image = UIImage(named: forecastVModel.m_weatherIconName)
+        self.m_day.text = forecastVModel.m_day
+        self.m_weatherCondition.text = forecastVModel.m_weatherCondition
+        self.m_degree.text = forecastVModel.m_degree
     }
 
 }
