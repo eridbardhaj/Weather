@@ -10,7 +10,7 @@ import UIKit
 
 class ForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    var dataArray: Array<Forecast> = Array()    //Array which hold our forecast models
+    var dataArray: [Forecast] = []    //Array which hold our forecast models
     @IBOutlet weak var tableView: UITableView!
 
     //MARK: - VC Lifecycle
@@ -18,15 +18,9 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
-        {
-            (error, array) -> (Void) in
-            if error == ErrorType.None
-            {
-                self.dataArray = array
-                self.tableView.reloadData()
-            }
-        })
+        
+        //Call API and get Results
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,9 +51,30 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.dataArray.count
+        return dataArray.count
     }
     
+    //MARK: - IBActions
+    @IBAction func refreshForecastWeather(sender: AnyObject)
+    {
+        loadData()
+    }
+    
+    //MARK: - Helpers
+    func loadData()
+    {
+        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
+        {
+                (error, array) -> (Void) in
+                if error == ErrorType.None
+                {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.dataArray = array
+                        self.tableView.reloadData()
+                    })
+                }
+        })
+    }
     
     /*
     // MARK: - Navigation

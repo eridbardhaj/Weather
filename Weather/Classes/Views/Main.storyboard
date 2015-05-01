@@ -29,7 +29,7 @@
         <!--Today-->
         <scene sceneID="G6L-Ob-4Do">
             <objects>
-                <viewController id="Tsj-YF-Ovm" customClass="TodayDetailsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tsj-YF-Ovm" customClass="TodayViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6EB-TO-cIt"/>
                         <viewControllerLayoutGuide type="bottom" id="5aB-2V-ZYy"/>
@@ -133,7 +133,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-fa-ICT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xup-fa-ICT">
                                         <rect key="frame" x="200" y="345" width="20" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="IXI-Pt-zsz"/>
@@ -277,7 +277,13 @@
                             <constraint firstItem="Loa-CB-B7B" firstAttribute="top" secondItem="ci2-FD-YUr" secondAttribute="top" constant="64" id="mjn-QB-HeU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Today" id="I2i-lp-vSo"/>
+                    <navigationItem key="navigationItem" title="Today" id="I2i-lp-vSo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="S20-aU-rVD">
+                            <connections>
+                                <action selector="refreshTodayWeather:" destination="Tsj-YF-Ovm" id="xjb-vC-Pgh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -350,20 +356,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="81" id="EBx-jS-I5d" customClass="ForecastTableViewCell" customModule="Weather" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="EBx-jS-I5d" customClass="ForecastTableViewCell" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EBx-jS-I5d" id="rHi-8P-DY2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tod-sun-big" translatesAutoresizingMaskIntoConstraints="NO" id="pAp-iA-7iX">
-                                                    <rect key="frame" x="15" y="15" width="50" height="51"/>
+                                                    <rect key="frame" x="15" y="15" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3YM-t1-S7Z"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgC-Pb-Xdp">
-                                                    <rect key="frame" x="80" y="18" width="117" height="21"/>
+                                                    <rect key="frame" x="80" y="18" width="65" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="b4U-hw-Zt3"/>
                                                     </constraints>
@@ -372,16 +378,23 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20º" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wds-jZ-8ur">
-                                                    <rect key="frame" x="212" y="15" width="93" height="51"/>
+                                                    <rect key="frame" x="217" y="15" width="88" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="93" id="UXh-iA-tWN"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="QW8-0p-QzO"/>
+                                                        <constraint firstAttribute="height" constant="50" id="TXF-gx-rtb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="55"/>
                                                     <color key="textColor" red="0.18431372549019609" green="0.56862745098039214" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fc-line" translatesAutoresizingMaskIntoConstraints="NO" id="e7s-L7-5Bo">
+                                                    <rect key="frame" x="80" y="79" width="240" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Hmt-Yg-tI1"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-0H-RFg">
-                                                    <rect key="frame" x="80" y="41" width="117" height="21"/>
+                                                    <rect key="frame" x="80" y="40" width="41" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="V2D-Vn-7Fb"/>
                                                     </constraints>
@@ -389,34 +402,25 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e7s-L7-5Bo">
-                                                    <rect key="frame" x="80" y="80" width="240" height="1"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="Hmt-Yg-tI1"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="pAp-iA-7iX" secondAttribute="bottom" constant="15" id="1rB-f4-aXa"/>
-                                                <constraint firstAttribute="bottom" secondItem="Wds-jZ-8ur" secondAttribute="bottom" constant="15" id="2Yv-56-fit"/>
                                                 <constraint firstItem="Mzx-0H-RFg" firstAttribute="bottom" secondItem="pAp-iA-7iX" secondAttribute="bottom" constant="-4" id="3Df-5s-RLV"/>
                                                 <constraint firstItem="Mzx-0H-RFg" firstAttribute="leading" secondItem="pAp-iA-7iX" secondAttribute="trailing" constant="15" id="BcC-cG-Zk5"/>
                                                 <constraint firstItem="xgC-Pb-Xdp" firstAttribute="leading" secondItem="pAp-iA-7iX" secondAttribute="trailing" constant="15" id="D36-H2-QuX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wds-jZ-8ur" secondAttribute="trailing" constant="15" id="Dde-3b-moU"/>
                                                 <constraint firstAttribute="bottom" secondItem="e7s-L7-5Bo" secondAttribute="bottom" id="Fn3-hw-Xb2"/>
                                                 <constraint firstAttribute="trailing" secondItem="e7s-L7-5Bo" secondAttribute="trailing" id="IkS-To-0Sz"/>
-                                                <constraint firstItem="Wds-jZ-8ur" firstAttribute="leading" secondItem="xgC-Pb-Xdp" secondAttribute="trailing" constant="15" id="RMf-fN-ij3"/>
                                                 <constraint firstItem="xgC-Pb-Xdp" firstAttribute="top" secondItem="pAp-iA-7iX" secondAttribute="top" constant="3" id="SCq-5c-bxM"/>
                                                 <constraint firstItem="Mzx-0H-RFg" firstAttribute="leading" secondItem="e7s-L7-5Bo" secondAttribute="leading" id="WEb-dW-9gR"/>
                                                 <constraint firstItem="pAp-iA-7iX" firstAttribute="leading" secondItem="rHi-8P-DY2" secondAttribute="leading" constant="15" id="Y3e-1c-viV"/>
-                                                <constraint firstAttribute="trailing" secondItem="Wds-jZ-8ur" secondAttribute="trailing" constant="15" id="aNF-9x-ufX"/>
                                                 <constraint firstItem="pAp-iA-7iX" firstAttribute="top" secondItem="rHi-8P-DY2" secondAttribute="top" constant="15" id="mRy-Bj-Xv7"/>
-                                                <constraint firstItem="Wds-jZ-8ur" firstAttribute="top" secondItem="rHi-8P-DY2" secondAttribute="top" constant="15" id="oPf-CO-4j2"/>
-                                                <constraint firstItem="Wds-jZ-8ur" firstAttribute="leading" secondItem="Mzx-0H-RFg" secondAttribute="trailing" constant="15" id="wk8-yv-DZ3"/>
+                                                <constraint firstAttribute="centerY" secondItem="Wds-jZ-8ur" secondAttribute="centerY" id="tld-UF-LRC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="m_day" destination="xgC-Pb-Xdp" id="um8-Cg-0LB"/>
-                                            <outlet property="m_degree" destination="Wds-jZ-8ur" id="ELg-cp-dwQ"/>
+                                            <outlet property="m_temperature" destination="Wds-jZ-8ur" id="Q92-Mg-xqh"/>
                                             <outlet property="m_weatherCondition" destination="Mzx-0H-RFg" id="2uB-jm-pje"/>
                                             <outlet property="m_weatherIcon" destination="pAp-iA-7iX" id="npt-QZ-2dU"/>
                                         </connections>
@@ -427,16 +431,31 @@
                                     <outlet property="delegate" destination="Ux3-cs-Cou" id="TXC-XY-iGR"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc-line" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-Yg-tnT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="ffe-kX-AZd"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TPu-U1-3QI" firstAttribute="leading" secondItem="cPW-Kk-yjb" secondAttribute="leading" id="2GL-I2-7dA"/>
                             <constraint firstAttribute="trailing" secondItem="TPu-U1-3QI" secondAttribute="trailing" id="5da-pE-x5X"/>
+                            <constraint firstAttribute="trailing" secondItem="f9p-Yg-tnT" secondAttribute="trailing" id="Ubx-kQ-QMH"/>
                             <constraint firstItem="TPu-U1-3QI" firstAttribute="top" secondItem="cPW-Kk-yjb" secondAttribute="top" id="VQ5-KP-UXS"/>
                             <constraint firstAttribute="bottom" secondItem="TPu-U1-3QI" secondAttribute="bottom" id="YEc-tr-sZ7"/>
+                            <constraint firstItem="f9p-Yg-tnT" firstAttribute="top" secondItem="FaL-t7-guF" secondAttribute="bottom" id="fS9-6j-hDB"/>
+                            <constraint firstItem="f9p-Yg-tnT" firstAttribute="leading" secondItem="cPW-Kk-yjb" secondAttribute="leading" id="sU9-Xf-ogk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Paris" id="56j-VB-Wlx"/>
+                    <navigationItem key="navigationItem" title="Paris" id="56j-VB-Wlx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Uhz-dv-2Vg">
+                            <connections>
+                                <action selector="refreshForecastWeather:" destination="Ux3-cs-Cou" id="4xc-WV-7gk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="TPu-U1-3QI" id="Pa2-jx-1dV"/>
@@ -477,7 +496,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-Cy-hIE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-Cy-hIE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -545,6 +564,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fc-line" width="234" height="1"/>
         <image name="loc-line" width="320" height="2"/>
         <image name="tod-celcius" width="21" height="15"/>
         <image name="tod-compass" width="17" height="17"/>

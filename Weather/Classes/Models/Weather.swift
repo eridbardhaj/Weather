@@ -9,23 +9,6 @@
 import UIKit
 import ObjectMapper
 
-//Enum to keep track of weather condition
-enum WeatherCondition
-{
-    case Thunderstorm, Cloudy, Rainy, Sunny, Snowy, Foggy, Windy, None
-}
-
-//Enum to keep track of DegreeType
-enum DegreeType
-{
-    case Celvin, Celcius, Fahrenheit, None
-}
-
-//Enum to keep track of Wind Metrics
-enum WindMetrics
-{
-    case MetersPerSecond, KilometersPerHour, None
-}
 
 //MARK: - Main Model
 class Weather: Mappable
@@ -36,7 +19,7 @@ class Weather: Mappable
     var m_lng: Double = 0.0
     var m_city: String = ""
     var m_state: String = ""
-    var m_degree: Double = 0.0
+    var m_temperature: Double = 0.0
     var m_windDirectionAngle: Double = 0.0
     var m_windSpeed: Double = 0.0
     var m_humidity: Double = 0.0
@@ -64,7 +47,7 @@ class Weather: Mappable
         m_lng <- map["coord.lon"]
         m_city <- map["name"]
         m_state <- map["country"]
-        m_degree <- map["main.temp"]
+        m_temperature <- map["main.temp"]
         m_windDirectionAngle <- map["wind.deg"]
         m_windSpeed <- map["wind.speed"]
         m_humidity <- map["main.humidity"]

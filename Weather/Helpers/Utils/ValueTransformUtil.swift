@@ -10,7 +10,6 @@ import UIKit
 
 class ValueTransformUtil: NSObject
 {
-
     //MARK: - Value Transformation
     /**
     Transforms weather code from API to meaningful condition
@@ -62,50 +61,18 @@ class ValueTransformUtil: NSObject
         }
     }
     
-    
-    /**
-    Find icon name for weather
-    
-    :param: weather Enum Parameter
-    
-    :returns: name of the icon
-    */
-    class func getWeatherIconName(weather: WeatherCondition) -> String
-    {
-        switch weather
-        {
-        case WeatherCondition.Thunderstorm:
-            return "fc-cl"
-            
-        case WeatherCondition.Sunny:
-            return "fc-sun"
-            
-        case WeatherCondition.Cloudy:
-            return "fc-cs"
-            
-        case WeatherCondition.Windy:
-            return "fc-cs"
-            
-        //FIXME: Needed icons here, we don't have resources
-        case WeatherCondition.Rainy:
-            return ""
-            
-        case WeatherCondition.Snowy:
-            return ""
-            
-        case WeatherCondition.Foggy:
-            return ""
-            
-        default:
-            return ""
-        }
-    }
-    
     //MARK: - Date Operations
+    /**
+    Get name of a day at specific time
+    
+    :param: timestamp time in seconds from 1970
+    
+    :returns: day name
+    */
     class func getDayName(timestamp: NSTimeInterval) -> String
     {
         var date = NSDate(timeIntervalSince1970: timestamp)
-        var calendar = NSCalendar()
+        var calendar = NSCalendar.currentCalendar()
         var component: NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitWeekday, fromDate: date) as NSDateComponents
         
         
@@ -113,7 +80,7 @@ class ValueTransformUtil: NSObject
         
     }
     
-    class func getDayString(day_id: Int) -> String
+    private class func getDayString(day_id: Int) -> String
     {
         switch day_id
         {
@@ -130,8 +97,8 @@ class ValueTransformUtil: NSObject
             return "Wednesday"
             
         case 5:
-            
             return "Thursday"
+            
         case 6:
             return "Friday"
             
@@ -145,5 +112,29 @@ class ValueTransformUtil: NSObject
             return ""
             
         }
+    }
+    
+    //MARK: - Orientation Operations
+    /**
+    Get the wind direction (EN, E, etc) by giving degrees
+    
+    :param: degree Angle degrees [0, 360]
+    
+    :returns: Wind direction
+    */
+    class func getWindDirection(degree: Double) -> String
+    {
+        var area = getArea(degree)
+        var direction = WindDirection(rawValue: area)
+        
+        return direction!.description
+    }
+    
+    private class func getArea(interval: Double) -> Int
+    {
+        var area = Int(round((interval/360.0)*8))
+        area = (area==8) ? 0 : area
+        
+        return area
     }
 }

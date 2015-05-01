@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum ErrorType
-{
-    case Network, Server, GPS, None
-}
-
 class Constants: NSObject
 {
     class Colors

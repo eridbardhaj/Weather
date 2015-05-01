@@ -30,7 +30,7 @@ class Forecast: Mappable
         
         m_weatherType = m_weatherArr1[0].objectForKey("id") as! Int
         m_weatherDescription = m_weatherArr1[0].objectForKey("main") as! String
-        m_temperature    <- list["main.temp"]
+        m_temperature    <- list["temp.day"]
         m_day            <- list["dt"]
     }
     

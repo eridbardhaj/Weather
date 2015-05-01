@@ -19,21 +19,29 @@ class WeatherNetwork: NSObject
     :param: city            City that you want to look up for
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getCurrentWeatherByName(city: String, responseHandler: (ErrorType, AnyObject?) -> (Void))
+    class func getCurrentWeatherByName(city: String, responseHandler: (ErrorType, Weather?) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())weather?q=\(city)APPID=9d8140ec7e949399dee6b61b5607db20"
+        let urlString = "\(Constants.URLS.weatherBaseURL())weather?q=\(city)&units=metric"
+        
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
         //Make Request and return callback
-        self.makeRequest(urlString, responseCallBack:
+        self.makeRequest(encodedURL!, responseCallBack:
         {
             (error, object) -> (Void) in
             
             if (!error)
             {
-                let weather = Mapper<Weather>().map(object)
-                
-                responseHandler(ErrorType.None, weather!)
+                if let weather = Mapper<Weather>().map(object)
+                {
+                    responseHandler(ErrorType.None, weather)
+                }
+                else
+                {
+                    responseHandler(ErrorType.Server, nil)
+                }
             }
             else
             {
@@ -54,18 +62,28 @@ class WeatherNetwork: NSObject
         //Create URL String
         let urlString = "\(Constants.URLS.weatherBaseURL())weather?lat=\(lat)&lon=\(lng)"
         
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        
         //Make Request and return callback
-        self.makeRequest(urlString, responseCallBack:
+        self.makeRequest(encodedURL!, responseCallBack:
             {
                 (error, object) -> (Void) in
                 
                 if (!error)
                 {
-                    responseHandler(ErrorType.None, object)
+                    if let weather = Mapper<Weather>().map(object)
+                    {
+                        responseHandler(ErrorType.None, weather)
+                    }
+                    else
+                    {
+                        responseHandler(ErrorType.Server, nil)
+                    }
                 }
                 else
                 {
-                    responseHandler(ErrorType.Server, object)
+                    responseHandler(ErrorType.Server, nil)
                 }
         })
     }
@@ -80,22 +98,27 @@ class WeatherNetwork: NSObject
     class func getForecastWeatherByName(city: String, responseHandler: (ErrorType, Array<Forecast>) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())forecast?q=\(city)"
+        let urlString = "\(Constants.URLS.weatherBaseURL())forecast/daily?q=\(city)&units=metric&cnt=7"
+        
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
         //Make Request and return callback
-        self.makeRequest(urlString, responseCallBack:
+        self.makeRequest(encodedURL!, responseCallBack:
             {
                 (error, object) -> (Void) in
                 
                 if (!error)
                 {
-                    if let lists: [AnyObject] = object["list"] as? [AnyObject]
+                    if let lists: [AnyObject] = object!["list"] as? [AnyObject]
                     {
                         let forecast: Array<Forecast> = Mapper<Forecast>().mapArray(lists)!
                         responseHandler(ErrorType.None, forecast)
                     }
-                    responseHandler(ErrorType.None, [])
-                    
+                    else
+                    {
+                        responseHandler(ErrorType.None, [])
+                    }
                 }
                 else
                 {
@@ -114,27 +137,38 @@ class WeatherNetwork: NSObject
     class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject?) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())forecast?lat=\(lat)&lon=\(lng)"
+        let urlString = "\(Constants.URLS.weatherBaseURL())forecast/daily?lat=\(lat)&lon=\(lng)&units=metric&cnt=7"
+        
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
         //Make Request and return callback
-        self.makeRequest(urlString, responseCallBack:
-        {
+        self.makeRequest(encodedURL!, responseCallBack:
+            {
                 (error, object) -> (Void) in
                 
                 if (!error)
                 {
-                    responseHandler(ErrorType.None, object)
+                    if let lists: [AnyObject] = object!["list"] as? [AnyObject]
+                    {
+                        let forecast: Array<Forecast> = Mapper<Forecast>().mapArray(lists)!
+                        responseHandler(ErrorType.None, forecast)
+                    }
+                    else
+                    {
+                        responseHandler(ErrorType.None, [])
+                    }
                 }
                 else
                 {
-                    responseHandler(ErrorType.Server, object)
+                    responseHandler(ErrorType.Server, [])
                 }
         })
     }
     
     //MARK: - Helpers
     //Universal caller
-    private class func makeRequest(urlString: String, responseCallBack: (Bool, AnyObject) -> (Void))
+    private class func makeRequest(urlString: String, responseCallBack: (Bool, AnyObject?) -> (Void))
     {
         Alamofire.request(.GET, urlString, parameters: nil).responseJSON(options: NSJSONReadingOptions.AllowFragments)
         {
@@ -146,7 +180,7 @@ class WeatherNetwork: NSObject
             }
             else
             {
-                responseCallBack(true, object!)
+                responseCallBack(true, object)
             }
         }
     }

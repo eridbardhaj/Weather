@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayDetailsViewController: UIViewController
+class TodayViewController: UIViewController
 {
     //MARK: - IBOutlets
     @IBOutlet weak var m_weatherIcon: UIImageView!
@@ -29,6 +29,9 @@ class TodayDetailsViewController: UIViewController
 
         // Do any additional setup after loading the view.
         
+        //Get data from server API and load into the view
+        loadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,9 +40,36 @@ class TodayDetailsViewController: UIViewController
     }
     
     //MARK: - Setups
+    func loadData()
+    {
+        WeatherNetwork.getCurrentWeatherByName("New York", responseHandler:
+        {
+            (error, object) -> (Void) in
+            
+            dispatch_async(dispatch_get_main_queue(),
+            {
+                () -> Void in
+                
+                self.model = object
+                self.bindDataIntoViews()
+            })
+        })
+    }
+    
     func bindDataIntoViews()
     {
+        //Init viewModel
+        var v_model: TodayViewModel = TodayViewModel(model: model!)
         
+        //Pass the model to the views
+        m_weatherIcon.image = UIImage(named: v_model.m_weatherImageName)
+        m_currentLocation.text = v_model.m_currentLocation
+        m_currentWeatherInfo.text = v_model.m_currentWeatherInfo
+        m_humidityPercentage.text = v_model.m_humidity
+        m_precipitation.text = v_model.m_precipitation
+        m_pressure.text = v_model.m_pressure
+        m_windSpeed.text = v_model.m_windSpeed
+        m_windDirection.text = v_model.m_directionAngle
     }
     
     
@@ -50,6 +80,10 @@ class TodayDetailsViewController: UIViewController
         
     }
 
+    @IBAction func refreshTodayWeather(sender: AnyObject)
+    {
+        loadData()
+    }
     /*
     // MARK: - Navigation
 

@@ -13,17 +13,13 @@ class ForecastViewModel: NSObject
     var m_weatherIconName: String = ""
     var m_day: String = ""
     var m_weatherCondition: String = ""
-    var m_degree: String = ""
+    var m_temperature: String = ""
     
     init(model: Forecast)
     {
-        m_weatherIconName = ValueTransformUtil.getWeatherIconName(ValueTransformUtil.getWeatherCondition(model.m_weatherType))
+        m_weatherIconName = ValueTransformUtil.getWeatherCondition(model.m_weatherType).forecastIconName
         m_day = ValueTransformUtil.getDayName(model.m_day)
         m_weatherCondition = model.m_weatherDescription
-        
-        //FIXME: Orientation based on Angle, this is hardcoded
-        m_degree = "SE"
+        m_temperature = String(format: "%.0f", model.m_temperature) + "°"
     }
-    
-    
 }
