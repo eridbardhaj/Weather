@@ -53,51 +53,7 @@ class Weather: Mappable
         m_humidity <- map["main.humidity"]
         m_pressure <- map["main.pressure"]
         
-        //TODO: Add m_preciptation
-        
+        //TODO: Add m_preciptation   
     }
-    
-    //TODO: Clean up this code after testing
-//    {
-//    "coord": {
-//    "lon": 139,
-//    "lat": 35
-//    },
-//    "sys": {
-//    "message": 1.2659,
-//    "country": "JP",
-//    "sunrise": 1430337254,
-//    "sunset": 1430386094
-//    },
-//    "weather": [
-//    {
-//    "id": 800,
-//    "main": "Clear",
-//    "description": "Sky is Clear",
-//    "icon": "01n"
-//    }
-//    ],
-//    "base": "stations",
-//    "main": {
-//    "temp": 290.697,
-//    "temp_min": 290.697,
-//    "temp_max": 290.697,
-//    "pressure": 1022,
-//    "sea_level": 1029.92,
-//    "grnd_level": 1022,
-//    "humidity": 94
-//    },
-//    "wind": {
-//    "speed": 4.76,
-//    "deg": 73.0052
-//    },
-//    "clouds": {
-//    "all": 0
-//    },
-//    "dt": 1430395043,
-//    "id": 1851632,
-//    "name": "Shuzenji",
-//    "cod": 200
-//    }
 }
 

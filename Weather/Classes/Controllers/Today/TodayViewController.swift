@@ -32,6 +32,8 @@ class TodayViewController: UIViewController
         //Get data from server API and load into the view
         loadData()
         
+        //Add observer to listen to possible changes on loadData
+        DataManager.shared.createObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,13 +48,21 @@ class TodayViewController: UIViewController
         {
             (error, object) -> (Void) in
             
-            dispatch_async(dispatch_get_main_queue(),
+            //No Error just show content
+            if error == ErrorType.None
             {
-                () -> Void in
-                
-                self.model = object
-                self.bindDataIntoViews()
-            })
+                dispatch_async(dispatch_get_main_queue(),
+                {
+                        () -> Void in
+                        
+                        self.model = object
+                        self.bindDataIntoViews()
+                })
+            }
+            else
+            {
+                //Handle Error
+            }
         })
     }
     

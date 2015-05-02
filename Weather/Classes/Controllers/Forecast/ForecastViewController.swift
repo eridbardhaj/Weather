@@ -16,16 +16,40 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //Configure tableView insets
+        ConfigUtils.configureTableView(self.tableView)
         
         //Call API and get Results
         loadData()
+        
+        //Add observer to listen to possible changes on loadData
+        DataManager.shared.createObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Setups
+    func loadData()
+    {
+        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
+        {
+            (error, array) -> (Void) in
+            if error == ErrorType.None
+            {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.dataArray = array
+                    self.tableView.reloadData()
+                })
+            }
+            else
+            {
+                //Handle Error
+            }
+        })
     }
     
     //MARK: - UITableView Delegate and Datasource methods
@@ -58,22 +82,6 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func refreshForecastWeather(sender: AnyObject)
     {
         loadData()
-    }
-    
-    //MARK: - Helpers
-    func loadData()
-    {
-        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
-        {
-                (error, array) -> (Void) in
-                if error == ErrorType.None
-                {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.dataArray = array
-                        self.tableView.reloadData()
-                    })
-                }
-        })
     }
     
     /*

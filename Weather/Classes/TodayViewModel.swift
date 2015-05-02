@@ -21,6 +21,12 @@ class TodayViewModel: NSObject
     
     init(model: Weather)
     {
+        //Get local data preferences
+        let current_lengthType = DataManager.shared.m_length_unit
+        let current_tempType = DataManager.shared.m_tempUnit
+        
+        
+        //Set the values to the format that views need
         m_weatherImageName = ValueTransformUtil.getWeatherCondition(model.m_weather_code).todayWeatherIconName
         
         m_currentLocation = "\(model.m_city)"
@@ -31,8 +37,8 @@ class TodayViewModel: NSObject
         
         //FIXME: Need to be converted correctly
         m_precipitation = "0.2 mm"
-        m_pressure = String(format: "%.0f", model.m_pressure) + " hpa"
-        m_windSpeed = String(format: "%.1f", model.m_windSpeed) + " km/h"
-        m_currentWeatherInfo = String(format: "%.0f", model.m_temperature) + "° | \(model.m_weather_description)"
+        m_pressure = String(format: "%.0f", model.m_pressure) + " hPa"
+        m_windSpeed = String(format: "%.1f", current_lengthType.getSpeed(model.m_windSpeed)) + " \(current_lengthType.description)"
+        m_currentWeatherInfo = String(format: "%.0f", current_tempType.getDegree(model.m_temperature)) + "\(current_tempType.description) | \(model.m_weather_description)"
     }
 }

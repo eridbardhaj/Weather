@@ -17,9 +17,11 @@ class ForecastViewModel: NSObject
     
     init(model: Forecast)
     {
+        //Local preferences
+        let current_tempType = DataManager.shared.m_tempUnit
         m_weatherIconName = ValueTransformUtil.getWeatherCondition(model.m_weatherType).forecastIconName
         m_day = ValueTransformUtil.getDayName(model.m_day)
         m_weatherCondition = model.m_weatherDescription
-        m_temperature = String(format: "%.0f", model.m_temperature) + "°"
+        m_temperature = String(format: "%.0f", current_tempType.getDegree(model.m_temperature)) + "°"
     }
 }

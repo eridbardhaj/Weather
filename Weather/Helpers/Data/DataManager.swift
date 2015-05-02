@@ -28,8 +28,55 @@ class DataManager: NSObject
     
     
     //MARK: - Custom getters and setters
-    var city : String
+    //MARK: Units
+    var m_tempUnit : TemperatureUnit
     {
+        get
+        {
+            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
+            if let value = defaults!.integerForKey("unit_temperature") as Int?
+            {
+                return TemperatureUnit(rawValue: value)!
+            }
+            else
+            {
+                return TemperatureUnit(rawValue: 0)!
+            }
+        }
+        set (newValue)
+        {
+            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
+            defaults!.setInteger(newValue.rawValue, forKey: "unit_temperature")
+            defaults!.synchronize()
+        }
+    }
+    
+    var m_length_unit : WindSpeedUnit
+    {
+        get
+        {
+            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
+            if let value = defaults!.integerForKey("unit_length") as Int?
+            {
+                return WindSpeedUnit(rawValue: value)!
+            }
+            else
+            {
+                return WindSpeedUnit(rawValue: 0)!
+            }
+        }
+        set (newValue)
+        {
+            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
+            defaults!.setInteger(newValue.rawValue, forKey: "unit_length")
+            defaults!.synchronize()
+        }
+    }
+    
+    
+    //MARK: Saving Location (optional)
+    var m_city : String
+        {
         get
         {
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
@@ -45,41 +92,7 @@ class DataManager: NSObject
         }
     }
     
-    var temperature : String
-    {
-        get
-        {
-            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
-            var value: NSString? = defaults!.objectForKey("unit_temperature") as? NSString
-            
-            return (value != nil) ? "" : "\(value)"
-        }
-        set (newValue)
-        {
-            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
-            defaults!.setObject(newValue as NSString, forKey: "unit_temperature")
-            defaults!.synchronize()
-        }
-    }
-    
-    var length : String
-    {
-        get
-        {
-            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
-            var value: NSString? = defaults!.objectForKey("unit_length") as? NSString
-            
-            return (value != nil) ? "" : "\(value)"
-        }
-        set (newValue)
-        {
-            let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
-            defaults!.setObject(newValue as NSString, forKey: "unit_length")
-            defaults!.synchronize()
-        }
-    }
-    
-    var city_lat: Double
+    var m_city_lat: Double
     {
         get
         {
@@ -96,7 +109,7 @@ class DataManager: NSObject
         }
     }
     
-    var city_lng: Double
+    var m_city_lng: Double
     {
         get
         {
@@ -110,6 +123,28 @@ class DataManager: NSObject
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
             defaults!.setObject(NSNumber(double: newValue), forKey: "current_city_lng")
             defaults!.synchronize()
+
         }
+    }
+    
+    //MARK: - Methods
+    
+    //Get local settings
+    func getSettings() -> [Setting]
+    {
+        let currentLengthUnit = DataManager.shared.m_length_unit.rawValue
+        var setting1 = Setting(unit: "Units of length", currentValue: currentLengthUnit, allValues: [0, 1, 2], unitType: UnitType.Length)
+        
+        let currentTempUnit = DataManager.shared.m_tempUnit.rawValue
+        var setting2 = Setting(unit: "Units of temperature", currentValue: currentTempUnit, allValues: [0, 1, 2], unitType: UnitType.Temperature)
+        
+        return [setting1, setting2]
+    }
+    
+    //MARK: Observers
+    //Observers
+    func createObserver(controller: NSObject)
+    {
+        NSNotificationCenter.defaultCenter().addObserver(controller, selector: "loadData", name: ObserverType.Settings.description, object: nil)
     }
 }

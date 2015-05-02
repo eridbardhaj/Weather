@@ -17,8 +17,10 @@ enum ErrorType
 //Enum to keep track of weather condition
 enum WeatherCondition : Int
 {
+    //Values
     case Thunderstorm = 0, Cloudy, Rainy, Sunny, Snowy, Foggy, Windy, None
     
+    //Get icon name depending on enum value
     var forecastIconName : String
         {
         get
@@ -89,23 +91,121 @@ enum WeatherCondition : Int
 }
 
 //Enum to keep track of DegreeType
-enum DegreeType
+enum TemperatureUnit: Int
 {
-    case Celvin, Celcius, Fahrenheit, None
+    //Values
+    case Celcius=0, Kelvin, Fahrenheit, None
+    
+    //All Elements
+    static let allElements: [TemperatureUnit] = [Celcius, Kelvin, Fahrenheit]
+    
+    //Description
+    var description : String
+    {
+        get
+        {
+            switch(self)
+            {
+            case .Celcius:
+                return "°C"
+                
+            case .Kelvin:
+                return "K"
+                
+            case .Fahrenheit:
+                return "°F"
+                
+            default:
+                return "°C"
+            }
+        }
+    }
+    
+    /**
+    Default value from the API is celcius, so this method converts the value depending on its own type
+    
+    :param: celcius celcius degrees
+    
+    :returns: converted value depending on type
+    */
+    func getDegree(celcius: Double) -> Double
+    {
+        switch(self)
+        {
+        case .Celcius:
+            return celcius
+            
+        case .Kelvin:
+            return celcius+273.16
+            
+        case .Fahrenheit:
+            return (celcius*2.0)+30.0
+            
+        default:
+            return celcius
+        }
+    }
 }
 
 //MARK: - Wind
 //Enum to keep track of Wind Metrics
-enum WindSpeed
+enum WindSpeedUnit : Int
 {
-    case MPS, KMH, None
+    //Values
+    case MPS = 0, KMH, MPH, None
+    
+    //Array with all elements
+    static let allElements: [WindSpeedUnit] = [MPS, KMH, MPH]
+    
+    //Description
+    var description : String
+    {
+        get
+        {
+            switch(self)
+            {
+            case .MPS:
+                return "m/s"
+                
+            case .KMH:
+                return "km/h"
+                
+            case .MPH:
+                return "mph"
+                
+            default:
+                return "m/s"
+            }
+        }
+    }
+    
+    //Conversions from m/s
+    func getSpeed(speed: Double) -> Double
+    {
+        switch(self)
+        {
+        case .MPS:
+            return speed
+            
+        case .KMH:
+            return speed*3.6
+            
+        case .MPH:
+            return speed*2.23694
+            
+        default:
+            return speed
+        }
+    }
 }
 
 //Wind Direction
 enum WindDirection : Int
 {
+    //Values
     case North = 0, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest, None
     
+    //Get Description of an enum
     var description : String
     {
         get
@@ -135,6 +235,56 @@ enum WindDirection : Int
                 
             case .NorthWest:
                 return "NW"
+                
+            default:
+                return ""
+            }
+        }
+    }
+}
+
+//Unit type used in Settings
+enum UnitType : Int
+{
+    case Length=0, Temperature, None
+}
+
+//Enum used for observing
+enum ObserverType: String
+{
+    case Settings = "pref_changed"
+    
+    //Get description
+    var description: String
+    {
+        get
+        {
+            switch self
+            {
+            case .Settings:
+                return self.rawValue
+                
+            default:
+                return ""
+            }
+        }
+    }
+}
+
+//Enum to keep track of segue Identifiers
+enum SegueControllerID: String
+{
+    case ChooseUnit = "choose_unit_id"
+    
+    //Get description
+    var description: String
+    {
+        get
+        {
+            switch self
+            {
+            case .ChooseUnit:
+                return self.rawValue
                 
             default:
                 return ""

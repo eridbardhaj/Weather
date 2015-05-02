@@ -184,6 +184,4 @@ class WeatherNetwork: NSObject
             }
         }
     }
-    
-    
 }

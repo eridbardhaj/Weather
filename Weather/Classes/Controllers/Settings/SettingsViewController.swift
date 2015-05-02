@@ -8,15 +8,32 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    var dataArray: Array<String> = Array()
+    //TableView
+    @IBOutlet weak var tableView: UITableView!
+    
+    //Data holder
+    var dataArray: Array<Setting> = Array()
+    
+    //iVars
+    private var m_unitType: UnitType?
+    private var m_allValues: [Int]?
+    private var m_currentValue: Int?
+    private var m_chooseVCTitle: String?
     
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Config tableView insets
+        ConfigUtils.configureTableView(self.tableView)
+        
+        //Load data
+        loadData()
+        
+        //Add observer to listen to possible changes on loadData
+        DataManager.shared.createObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,24 +41,29 @@ class SettingsViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        self.tableView.reloadData()
+    }
+    
     //MARK: - Setups
     func loadData()
     {
-        dataArray = ["Unit of length", "Units of temperature"];
+        dataArray = DataManager.shared.getSettings()
+        self.tableView.reloadData()
     }
     
     //MARK: - UITableView Delegate and Datasource methods
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         //Dequeue our ForecastTableViewCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ForecastTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SettingsTableViewCell
         
-        //Load Forecast model
-        let text = dataArray[indexPath.row] as String
+        //Get current model
+        let model = dataArray[indexPath.row] as Setting
         
-        //Show the text
-        cell.textLabel?.text = text
-        cell.detailTextLabel?.text = text
+        //Configure cell
+        cell.configureCell(model, indexPath: indexPath, dataCount: dataArray.count)
         
         //return cell to the datasource
         return cell
@@ -56,15 +78,49 @@ class SettingsViewController: UIViewController
     {
         return dataArray.count
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        //Pass current cell values to iVar to get ready to navigate to the next level
+        prepareData(indexPath.row)
+        
+        //Trigger pushing to the next vc
+        self.performSegueWithIdentifier(SegueControllerID.ChooseUnit.description, sender: nil)
+        
+        //Deselect row
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    //MARK: - Utils
+    //Set data ready for the other side
+    private func prepareData(index: Int)
+    {
+        //Read model from the content holder array
+        let s_model = dataArray[index] as Setting
+        
+        //Spread it into iVars
+        m_allValues = s_model.m_allValues
+        m_unitType = s_model.m_unitType
+        m_currentValue = s_model.m_currentValue
+        m_chooseVCTitle = (m_unitType == UnitType.Length) ? "Length" : "Temperature"
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == SegueControllerID.ChooseUnit.description
+        {
+            // Get the new view controller using segue.destinationViewController.
+            var controller = segue.destinationViewController as! ChooseUnitViewController
+            
+            // Pass the selected object to the new view controller.
+            controller.m_currentIndex = m_currentValue!
+            controller.m_unitType = m_unitType!
+            controller.dataArray = m_allValues!
+            controller.title = m_chooseVCTitle
+        }
     }
-    */
 
 }
