@@ -17,6 +17,7 @@
 		E84CD1701AF5772F00A8432D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84CD16F1AF5772F00A8432D /* LocationManager.swift */; };
 		E84CD1721AF5774D00A8432D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84CD1711AF5774D00A8432D /* CoreLocation.framework */; };
 		E84CD1741AF5775300A8432D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84CD1731AF5775300A8432D /* QuartzCore.framework */; };
+		E84CD1781AF5A32600A8432D /* Weather.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E84CD1761AF59ACC00A8432D /* Weather.entitlements */; };
 		E85BA85C1AF4D0C10093B5F0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BA85B1AF4D0C10093B5F0 /* Setting.swift */; };
 		E85BA85E1AF4D36C0093B5F0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BA85D1AF4D36C0093B5F0 /* SettingsTableViewCell.swift */; };
 		E8B258AF1AEEBE9E00195F02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B258AE1AEEBE9E00195F02 /* AppDelegate.swift */; };
@@ -64,7 +65,7 @@
 		E84CD1711AF5774D00A8432D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E84CD1731AF5775300A8432D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E84CD1751AF57FC000A8432D /* TestPlayGround.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayGround.playground; sourceTree = "<group>"; };
-		E84CD1761AF59ACC00A8432D /* Weather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Weather.entitlements; path = ../Weather.entitlements; sourceTree = "<group>"; };
+		E84CD1761AF59ACC00A8432D /* Weather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Weather.entitlements; sourceTree = "<group>"; };
 		E85BA85B1AF4D0C10093B5F0 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E85BA85D1AF4D36C0093B5F0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E8B258A91AEEBE9E00195F02 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +156,7 @@
 			children = (
 				E84CD1761AF59ACC00A8432D /* Weather.entitlements */,
 			);
-			name = AppGroups;
+			path = AppGroups;
 			sourceTree = "<group>";
 		};
 		E8B258A01AEEBE9E00195F02 = {
@@ -477,6 +478,7 @@
 				E8B258B91AEEBE9E00195F02 /* LaunchScreen.xib in Resources */,
 				E8B258B61AEEBE9E00195F02 /* Images.xcassets in Resources */,
 				E8B258E11AEEC57500195F02 /* ProximaNova-Regular.otf in Resources */,
+				E84CD1781AF5A32600A8432D /* Weather.entitlements in Resources */,
 				E8B258E21AEEC57500195F02 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
