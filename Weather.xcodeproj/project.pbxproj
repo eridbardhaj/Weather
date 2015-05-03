@@ -39,6 +39,7 @@
 		E8D219D91AF042550021F243 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D219D81AF042550021F243 /* Forecast.swift */; };
 		E8D219DD1AF043FC0021F243 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D219DC1AF043FC0021F243 /* SettingsViewController.swift */; };
 		E8D219E11AF04BE20021F243 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D219E01AF04BE20021F243 /* DataManager.swift */; };
+		E8EBFC151AF65ADD00A6A5A5 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EBFC141AF65ADD00A6A5A5 /* MainTabBarViewController.swift */; };
 		E8FBC4E51AF4226C003B435C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBC4E41AF4226C003B435C /* Enums.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		E8D219D81AF042550021F243 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		E8D219DC1AF043FC0021F243 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E8D219E01AF04BE20021F243 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		E8EBFC141AF65ADD00A6A5A5 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		E8FBC4E41AF4226C003B435C /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +299,7 @@
 				E8D219D31AF041B50021F243 /* Forecast */,
 				E8D219DB1AF043E40021F243 /* Settings */,
 				E801C2051AF5465900F1FCBA /* ChooseUnits */,
+				E8EBFC141AF65ADD00A6A5A5 /* MainTabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				E8D219D71AF041E90021F243 /* ForecastTableViewCell.swift in Sources */,
 				87833CCC1AF241520018B6D8 /* TodayViewModel.swift in Sources */,
 				E8B258EC1AEEDDF000195F02 /* Weather.swift in Sources */,
+				E8EBFC151AF65ADD00A6A5A5 /* MainTabBarViewController.swift in Sources */,
 				E8D219D51AF041CD0021F243 /* ForecastViewController.swift in Sources */,
 				E8FBC4E51AF4226C003B435C /* Enums.swift in Sources */,
 				E85BA85C1AF4D0C10093B5F0 /* Setting.swift in Sources */,
