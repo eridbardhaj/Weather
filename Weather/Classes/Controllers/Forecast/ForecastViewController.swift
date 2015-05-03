@@ -29,6 +29,14 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         //Adding title
         self.title = DataManager.shared.m_city
     }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        //Adding title
+        self.title = DataManager.shared.m_city
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

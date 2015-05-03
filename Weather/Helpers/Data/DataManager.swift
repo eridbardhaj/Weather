@@ -75,14 +75,14 @@ class DataManager: NSObject
     
     
     //MARK: Saving Location (optional)
-    var m_city : String
+    var m_city : String!
         {
         get
         {
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
             var value: NSString? = defaults!.objectForKey("current_city_name") as? NSString
             
-            return (value == nil) ? "" : "\(value)"
+            return (value == nil) ? "" : String(value!)
         }
         set (newValue)
         {

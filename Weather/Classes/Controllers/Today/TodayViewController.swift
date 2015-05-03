@@ -58,8 +58,9 @@ class TodayViewController: UIViewController
                 dispatch_async(dispatch_get_main_queue(),
                 {
                     () -> Void in
-                        
+                    
                     self.model = object
+                    DataManager.shared.m_city = self.model!.m_city
                     self.bindDataIntoViews()
                 })
             }
