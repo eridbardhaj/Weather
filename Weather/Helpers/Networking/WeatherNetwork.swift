@@ -174,13 +174,13 @@ class WeatherNetwork: NSObject
         {
             (urlRequest, urlResponse, object, error) -> Void in
             
-            if (error == nil)
+            if (error != nil || object == nil)
             {
-                responseCallBack(false, object!)
+                responseCallBack(true, nil)
             }
             else
             {
-                responseCallBack(true, object)
+                responseCallBack(false, object!)
             }
         }
     }

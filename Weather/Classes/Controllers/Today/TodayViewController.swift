@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TodayViewController: UIViewController
+class TodayViewController: UIViewController, EBPullToRefreshDelegate
 {
     //MARK: - IBOutlets
+    @IBOutlet weak var m_scrollView: UIScrollView!
     @IBOutlet weak var m_weatherIcon: UIImageView!
     @IBOutlet weak var m_currentLocation: UILabel!
     @IBOutlet weak var m_currentWeatherInfo: UILabel!
@@ -20,6 +21,9 @@ class TodayViewController: UIViewController
     @IBOutlet weak var m_windSpeed: UILabel!
     @IBOutlet weak var m_windDirection: UILabel!
     
+    //PulltoRefresh
+    var pull2Refresh: CustomPullToRefresh = CustomPullToRefresh()
+    
     //MARK: - Properties
     var model: Weather?
     
@@ -28,6 +32,9 @@ class TodayViewController: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Configure pull to refresh
+        configurePullToRefresh()
         
         //Get data from server API and load into the view
         loadData()
@@ -87,24 +94,40 @@ class TodayViewController: UIViewController
         m_windDirection.text = v_model.m_directionAngle
     }
     
+    func configurePullToRefresh()
+    {
+        // Do any additional setup after loading the view, typically from a nib.
+        m_scrollView.contentInset = UIEdgeInsetsZero
+        m_scrollView.contentSize = CGSize(width: 0, height: self.m_scrollView.bounds.height+50)
+        
+        //Init Delegate
+        pull2Refresh.pullDelegate = self
+        
+        //Add Pull to refresh
+        pull2Refresh.setupRefreshControl(m_scrollView)
+    }
+    
     
     //MARK: - IBActions
     //Show native iOS Sharing Dialog
     @IBAction func shareCurrentInfo(sender: AnyObject)
     {
-        let text = "My Weather Project at STRV"
+        let shareURL = "http://www.strv.com/"
         
-        if let web = NSURL(string: "http://www.strv.com/")
+        let activityItems: [AnyObject] = [NSURL(string: shareURL)!]
+        let applicationActivities: [AnyObject]? = nil
+        let excludeActivities = [UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeMessage]
+        
+        var activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        activityController.excludedActivityTypes = excludeActivities
+        
+        self.presentViewController(activityController, animated: true, completion: nil)
+        
+        if activityController.respondsToSelector("popoverPresentationController")
         {
-            let objectsToShare = [text, web]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            var popOver = activityController.popoverPresentationController
             
-            //New Excluded Activities Code
-            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
-            //
-            
-            self.presentViewController(activityVC, animated: true, completion: nil)
-            
+            popOver?.sourceView = sender as! UIButton
         }
     }
 
@@ -112,14 +135,13 @@ class TodayViewController: UIViewController
     {
         loadData()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - EBPullToRefreshDelegate
+    func pullToRefreshTriggered()
+    {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.loadData()
+        })
     }
-    */
 
 }

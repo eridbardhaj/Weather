@@ -9,9 +9,19 @@
 import UIKit
 
 //Track the errors
-enum ErrorType
+enum ErrorType: String
 {
-    case Network, Server, GPS, None
+    case Network = "Network Error", Server = "Something went wrong", GPS = "Location permissions denied", None = ""
+    
+    var description: String
+    {
+        get
+        {
+            return self.rawValue
+        }
+    }
+    
+    
 }
 
 //Enum to keep track of weather condition
