@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private var m_allValues: [Int]?
     private var m_currentValue: Int?
     private var m_chooseVCTitle: String?
+    private var headerView: UIView?
     
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
@@ -28,6 +29,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
         //Config tableView insets
         ConfigUtils.configureTableView(self.tableView)
+        
+        //Header View
+        headerView = generalHeader()
         
         //Load data
         loadData()
@@ -91,6 +95,21 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 44.0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return 44.0
+    }
+    
     //MARK: - Utils
     //Set data ready for the other side
     private func prepareData(index: Int)
@@ -103,6 +122,21 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         m_unitType = s_model.m_unitType
         m_currentValue = s_model.m_currentValue
         m_chooseVCTitle = (m_unitType == UnitType.Length) ? "Length" : "Temperature"
+    }
+    
+    //Create headerView
+    private func generalHeader() -> UIView
+    {
+        var h_view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44.0))
+        var h_label = UILabel()
+        h_label.font = UIFont(name: "ProximaNova-Semibold", size: 16.0)!
+        h_label.text = "GENERAL"
+        h_label.textColor = Constants.Colors.lightBlue()
+        h_label.frame = CGRect(x: 15, y: 0, width: h_view.frame.width, height: h_view.frame.height)
+        
+        h_view.addSubview(h_label)
+        
+        return h_view
     }
 
     // MARK: - Navigation
@@ -120,6 +154,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             controller.m_unitType = m_unitType!
             controller.dataArray = m_allValues!
             controller.title = m_chooseVCTitle
+            controller.hidesBottomBarWhenPushed = true
         }
     }
 

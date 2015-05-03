@@ -25,6 +25,9 @@ class ChooseUnitViewController: UIViewController, UITableViewDelegate, UITableVi
         //Config tableView insets
         ConfigUtils.configureTableView(self.tableView)
         
+        //Remove separator for empty rows
+        self.tableView.tableFooterView = UIView()
+        
         //Load data
         loadData()
     }
@@ -66,6 +69,11 @@ class ChooseUnitViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return dataArray.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 44.0
     }
     
     //Depending on selection we save a iVar (m_currentIndex)

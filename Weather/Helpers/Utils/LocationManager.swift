@@ -64,6 +64,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate
         DataManager.shared.m_city_lat = lat!
         DataManager.shared.m_city_lng = lng!
         
+        //Update the new weather
+        NSNotificationCenter.defaultCenter().postNotificationName(ObserverType.LocationFound.description, object: nil)
+        
+        //Stop location manager
         locationManager.stopUpdatingLocation() //To save battery
     }
     

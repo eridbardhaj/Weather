@@ -146,5 +146,7 @@ class DataManager: NSObject
     func createObserver(controller: NSObject)
     {
         NSNotificationCenter.defaultCenter().addObserver(controller, selector: "loadData", name: ObserverType.Settings.description, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(controller, selector: "loadData", name: ObserverType.LocationFound.description, object: nil)
     }
 }

@@ -51,7 +51,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: - Custom Settings
     func changeLayout()
     {
+        //Navigation Bar customization
         UINavigationBar.appearance().setBackgroundImage(UIImage.new(), forBarMetrics: UIBarMetrics.Default)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "ProximaNova-Semibold", size: 18.0)!, NSForegroundColorAttributeName: Constants.Colors.blackColor()]
+        UINavigationBar.appearance().backItem?.backBarButtonItem?.tintColor = Constants.Colors.lightBlue()
+        
+        
+        //UIBarButtonItem Attributes
+        var barAttribs = [NSFontAttributeName : UIFont(name: "ProximaNova-Regular", size: 16.0)!, NSForegroundColorAttributeName: Constants.Colors.lightBlue()]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes(barAttribs, forState: UIControlState.Normal)
+        UIBarButtonItem.appearance().tintColor = Constants.Colors.lightBlue()
+        
+        
+        //UITabBar Attributes
+        var tabAttribsNormal = [NSFontAttributeName : UIFont(name: "ProximaNova-Semibold", size: 10.0)!, NSForegroundColorAttributeName: Constants.Colors.blackColor()]
+        var tabAttribsSelected = [NSFontAttributeName : UIFont(name: "ProximaNova-Semibold", size: 10.0)!, NSForegroundColorAttributeName: Constants.Colors.lightBlue(), ]
+        
+        UITabBarItem.appearance().setTitleTextAttributes(tabAttribsNormal, forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(tabAttribsSelected, forState: UIControlState.Selected)
+        
+        //Changing image tint color
+        UITabBar.appearance().tintColor = Constants.Colors.lightBlue()
+        UITabBar.appearance().backgroundImage = UIImage()
     }
     
     

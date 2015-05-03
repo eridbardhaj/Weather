@@ -17,6 +17,6 @@ class ConfigUtils: NSObject
     */
     class func configureTableView(tableView: UITableView)
     {
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }

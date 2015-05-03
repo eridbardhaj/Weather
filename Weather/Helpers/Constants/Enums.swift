@@ -253,20 +253,14 @@ enum UnitType : Int
 enum ObserverType: String
 {
     case Settings = "pref_changed"
+    case LocationFound = "location_found"
     
     //Get description
     var description: String
     {
         get
         {
-            switch self
-            {
-            case .Settings:
-                return self.rawValue
-                
-            default:
-                return ""
-            }
+            return self.rawValue
         }
     }
 }
