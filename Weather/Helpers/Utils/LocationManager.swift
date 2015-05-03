@@ -64,38 +64,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate
         DataManager.shared.m_city_lat = lat!
         DataManager.shared.m_city_lng = lng!
         
-        //Geocode location, and if there are results update the city
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler:
-        {
-            (placemarks, error) -> Void in
-            if (error != nil)
-            {
-                println("Error:" + error.localizedDescription)
-                return
-            }
-            
-            if placemarks.count > 0
-            {
-                let pm = placemarks[0] as! CLPlacemark
-                self.displayLocationInfo(pm)
-            }
-            else
-            {
-                println("Error with data")
-            }
-        })
-    }
-    
-    func displayLocationInfo(placemark: CLPlacemark)
-    {
-        dispatch_async(dispatch_get_main_queue(),
-        {
-            () -> Void in
-            //Store this content, in order to use later (Default: New York)
-            DataManager.shared.m_city = (placemark.administrativeArea != nil) ? placemark.administrativeArea : "New York"
-        })
-        
-        self.locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation() //To save battery
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)

@@ -25,6 +25,9 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         
         //Add observer to listen to possible changes on loadData
         DataManager.shared.createObserver(self)
+        
+        //Adding title
+        self.title = DataManager.shared.m_city
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +51,6 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     () -> Void in
                     self.dataArray = array!
-                    self.title = DataManager.shared.m_city
                     self.tableView.reloadData()
                 })
             }
