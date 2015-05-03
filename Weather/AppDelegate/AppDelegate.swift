@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Get current location
+        LocationManager.shared.getCurrentLocation()
+        
+        //Control UIApperance to customise layout
         changeLayout()
         return true
     }
@@ -48,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         UINavigationBar.appearance().setBackgroundImage(UIImage.new(), forBarMetrics: UIBarMetrics.Default)
     }
+    
+    
 
 }
 

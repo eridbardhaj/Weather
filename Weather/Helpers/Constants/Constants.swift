@@ -37,7 +37,7 @@ class Constants: NSObject
     {
         class func appGroupName() -> String
         {
-            return "com.strv"
+            return "group.weather.strv"
         }
     }
     
@@ -46,6 +46,24 @@ class Constants: NSObject
         class func weatherBaseURL() -> String
         {
             return "http://api.openweathermap.org/data/2.5/"
+        }
+        
+        class func autocompleteBaseURL() -> String
+        {
+            return "https://maps.googleapis.com/maps/api/place/autocomplete/json?&key=\(Constants.APIKeys.googleAutocompleteAPI())"
+        }
+        
+        class func placeAutocompletionOpenWeather() -> String
+        {
+            return "http://api.openweathermap.org/data/2.5/find?type=like&mode=json&"
+        }
+    }
+    
+    class APIKeys
+    {
+        class func googleAutocompleteAPI() -> String
+        {
+            return "AIzaSyDlFUCllNZ_ZY1Irnn46F90yZPMBL4aB6s"
         }
     }
 }

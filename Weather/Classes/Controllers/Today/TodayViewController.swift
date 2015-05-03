@@ -44,7 +44,11 @@ class TodayViewController: UIViewController
     //MARK: - Setups
     func loadData()
     {
-        WeatherNetwork.getCurrentWeatherByName("New York", responseHandler:
+        //Ask for the current coordinates
+        LocationManager.shared.getCurrentLocation()
+        
+        //Make the call to API
+        WeatherNetwork.getCurrentWeatherByCoordinates(DataManager.shared.m_city_lat, lng: DataManager.shared.m_city_lng, responseHandler:
         {
             (error, object) -> (Void) in
             
@@ -53,10 +57,10 @@ class TodayViewController: UIViewController
             {
                 dispatch_async(dispatch_get_main_queue(),
                 {
-                        () -> Void in
+                    () -> Void in
                         
-                        self.model = object
-                        self.bindDataIntoViews()
+                    self.model = object
+                    self.bindDataIntoViews()
                 })
             }
             else

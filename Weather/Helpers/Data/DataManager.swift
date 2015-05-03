@@ -82,7 +82,7 @@ class DataManager: NSObject
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
             var value: NSString? = defaults!.objectForKey("current_city_name") as? NSString
             
-            return (value != nil) ? "" : "\(value)"
+            return (value == nil) ? "" : "\(value)"
         }
         set (newValue)
         {
@@ -99,7 +99,7 @@ class DataManager: NSObject
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
             var value: NSNumber? = defaults!.objectForKey("current_city_lat") as? NSNumber
             
-            return (value != nil) ? 0.0 : value!.doubleValue
+            return (value == nil) ? 0.0 : value!.doubleValue
         }
         set (newValue)
         {
@@ -116,7 +116,7 @@ class DataManager: NSObject
             let defaults = NSUserDefaults(suiteName: Constants.Defaults.appGroupName())
             var value: NSNumber? = defaults!.objectForKey("current_city_lng") as? NSNumber
             
-            return (value != nil) ? 0.0 : value!.doubleValue
+            return (value == nil) ? 0.0 : value!.doubleValue
         }
         set (newValue)
         {

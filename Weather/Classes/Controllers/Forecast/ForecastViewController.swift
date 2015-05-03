@@ -35,13 +35,19 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - Setups
     func loadData()
     {
-        WeatherNetwork.getForecastWeatherByName("London", responseHandler:
+        //Ask for the current coordinates
+        LocationManager.shared.getCurrentLocation()
+        
+        //Make the call to API
+        WeatherNetwork.getForecastWeatherByCoordinates(DataManager.shared.m_city_lat, lng: DataManager.shared.m_city_lng, responseHandler:
         {
             (error, array) -> (Void) in
             if error == ErrorType.None
             {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.dataArray = array
+                dispatch_async(dispatch_get_main_queue(),
+                {
+                    () -> Void in
+                    self.dataArray = array!
                     self.tableView.reloadData()
                 })
             }

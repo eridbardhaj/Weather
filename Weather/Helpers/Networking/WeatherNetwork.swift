@@ -57,10 +57,10 @@ class WeatherNetwork: NSObject
     :param: lng             Longitude of your location
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getCurrentWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject?) -> (Void))
+    class func getCurrentWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, Weather?) -> (Void))
     {
         //Create URL String
-        let urlString = "\(Constants.URLS.weatherBaseURL())weather?lat=\(lat)&lon=\(lng)"
+        let urlString = "\(Constants.URLS.weatherBaseURL())weather?lat=\(lat)&lon=\(lng)&units=metric"
         
         //Encode string to avoid escapes
         let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
@@ -134,7 +134,7 @@ class WeatherNetwork: NSObject
     :param: lng             Longitude of your location
     :param: responseHandler Closure that returns errortype and the object that was received by the API
     */
-    class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, AnyObject?) -> (Void))
+    class func getForecastWeatherByCoordinates(lat: Double, lng: Double, responseHandler: (ErrorType, Array<Forecast>?) -> (Void))
     {
         //Create URL String
         let urlString = "\(Constants.URLS.weatherBaseURL())forecast/daily?lat=\(lat)&lon=\(lng)&units=metric&cnt=7"
@@ -183,5 +183,48 @@ class WeatherNetwork: NSObject
                 responseCallBack(true, object)
             }
         }
+    }
+    
+    //TODO: - For the moment are unused, if we get a touch to the full Weather Version, one of these will be active
+    //MARK: - Searching a place and get its coordinates back
+    class func searchPlaceGoogle(name: String)
+    {
+        //Create URL String
+        let urlString = "\(Constants.URLS.autocompleteBaseURL())&input=\(name)"
+        
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        self.makeRequest(encodedURL!, responseCallBack:
+            {
+                (error, object) -> (Void) in
+                
+                println("\(object)")
+        })
+    }
+    
+    class func searchPlaceOpenWeatherAPI(name: String)
+    {
+        //Create URL String
+        let urlString = "\(Constants.URLS.placeAutocompletionOpenWeather())q=\(name)"
+        
+        //Encode string to avoid escapes
+        let encodedURL = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        
+        //Make request and get the response back
+        self.makeRequest(encodedURL!, responseCallBack:
+            {
+                (error, object) -> (Void) in
+                if !error
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+        })
+        
     }
 }
