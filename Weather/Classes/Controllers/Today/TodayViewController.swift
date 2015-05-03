@@ -91,7 +91,20 @@ class TodayViewController: UIViewController
     //Show native iOS Sharing Dialog
     @IBAction func shareCurrentInfo(sender: AnyObject)
     {
+        let text = "My Weather Project at STRV"
         
+        if let web = NSURL(string: "http://www.strv.com/")
+        {
+            let objectsToShare = [text, web]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+            //
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+            
+        }
     }
 
     @IBAction func refreshTodayWeather(sender: AnyObject)

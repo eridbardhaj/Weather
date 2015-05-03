@@ -48,6 +48,7 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
                 {
                     () -> Void in
                     self.dataArray = array!
+                    self.title = DataManager.shared.m_city
                     self.tableView.reloadData()
                 })
             }
