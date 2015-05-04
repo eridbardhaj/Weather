@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import WatchKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,6 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    //MARK: - WatchKit
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
+    {
+        //Make the call to API
+        WeatherNetwork.getForecastWeatherByCoordinates(DataManager.shared.m_city_lat, lng: DataManager.shared.m_city_lng, responseHandler:
+            {
+                (error, array) -> (Void) in
+                if error == ErrorType.None
+                {
+                    var response: NSDictionary = NSDictionary(dictionary: ["response" : array as! AnyObject])
+                    reply(response as [NSObject : AnyObject])
+                }
+                else
+                {
+                    //Handle Error
+                    reply(nil)
+                }
+        })
+    }
+    
     //MARK: - Custom Settings
     func changeLayout()
     {
@@ -75,8 +96,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = Constants.Colors.lightBlue()
         UITabBar.appearance().backgroundImage = UIImage()
     }
-    
-    
-
 }
 

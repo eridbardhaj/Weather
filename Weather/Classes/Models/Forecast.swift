@@ -20,6 +20,7 @@ class Forecast: Mappable
     {
         mapping(map)
     }
+
     
     //MARK: - Mappable
     func mapping(map: Map)

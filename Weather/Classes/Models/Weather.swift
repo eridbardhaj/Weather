@@ -55,5 +55,14 @@ class Weather: Mappable
         
         //TODO: Add m_preciptation   
     }
+    
+    required init(city: String, state: String, temp: Double, wCondition: String, mWeatherCode: Int)
+    {
+        m_city = city
+        m_state = state
+        m_temperature = temp
+        m_weather_description = wCondition
+        m_weather_code = mWeatherCode
+    }
 }
 

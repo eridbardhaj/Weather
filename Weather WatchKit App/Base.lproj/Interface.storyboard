@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Light.otf">
+            <string>ProximaNova-Light</string>
+            <string>ProximaNova-Light</string>
+            <string>ProximaNova-Light</string>
+            <string>ProximaNova-Light</string>
+            <string>ProximaNova-Light</string>
+            <string>ProximaNova-Light</string>
+        </mutableArray>
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+        <mutableArray key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--w_background-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller backgroundImage="w_background" contentMode="center" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Weather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="center" alpha="0.69999999999999973" layout="vertical" radius="2" spacing="1" id="bcH-xF-sD0">
+                            <items>
+                                <label alignment="center" verticalAlignment="bottom" text="Tirana, Albania" id="wrT-K0-7Iz">
+                                    <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                </label>
+                                <label alignment="center" text="Today" id="UpT-Sz-gvE">
+                                    <color key="textColor" red="0.1843137255" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </group>
+                        <group width="1" height="100" alignment="center" verticalAlignment="center" alpha="0.69999999999999973" contentMode="scaleAspectFit" radius="2" id="XKK-Fx-1Ki">
+                            <items>
+                                <group width="1" height="100" alignment="left" backgroundImage="w_circle" contentMode="scaleAspectFit" layout="vertical" id="mav-56-qJG">
+                                    <items>
+                                        <imageView width="17" height="17" alignment="center" verticalAlignment="center" image="tod-cr" contentMode="scaleAspectFit" id="cHA-oX-PxD"/>
+                                        <label alignment="center" verticalAlignment="center" text="Clear" id="dsy-Nf-JQb">
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="14"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" text="80°" id="fbb-Qh-OHR">
+                                            <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="36"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <segue destination="iPZ-tC-qd4" kind="relationship" relationship="nextPage" id="Jvw-pl-Kbg"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="347"/>
+        </scene>
+        <!--w_background-->
+        <scene sceneID="2cg-W7-8WU">
+            <objects>
+                <controller backgroundImage="w_background" contentMode="scaleAspectFill" id="iPZ-tC-qd4" customClass="ForecastInterfaceController" customModule="Weather_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="jG5-22-ZsD">
+                            <items>
+                                <tableRow identifier="cell" selectable="NO" id="gNJ-dj-e42" customClass="ForecastCell" customModule="Weather_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="55.5" alignment="left" layout="vertical" id="8zk-c3-Eg6">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="center" id="Dpj-iZ-V8y">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="TODAY" id="Tut-br-Qd1">
+                                                        <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                    </label>
+                                                    <imageView width="15" height="15" alignment="right" image="tod-cr" id="MSE-j5-xTJ"/>
+                                                </items>
+                                            </group>
+                                            <group width="1" alignment="center" verticalAlignment="center" id="cgZ-Lk-AMQ">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="18°" id="SsW-34-Uu3">
+                                                        <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                    </label>
+                                                    <label alignment="left" text="Rain" id="xBO-lt-MRk">
+                                                        <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="m_day" destination="Tut-br-Qd1" id="YrT-8I-Kbs"/>
+                                        <outlet property="m_temperature" destination="SsW-34-Uu3" id="Ugb-vZ-9LE"/>
+                                        <outlet property="m_weatherCondition" destination="xBO-lt-MRk" id="g7V-GL-9yt"/>
+                                        <outlet property="m_weatherIcon" destination="MSE-j5-xTJ" id="gNZ-mj-XmA"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="jG5-22-ZsD" id="a5f-mP-J4O"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="443" y="347"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="BOz-TT-tkC">
+            <objects>
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Weather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" backgroundImage="w_background" contentMode="scaleAspectFill" layout="vertical" radius="2" id="W4j-D3-C8f">
+                            <items>
+                                <label alignment="left" verticalAlignment="bottom" text="Today" id="7eJ-ua-lPP">
+                                    <color key="textColor" red="0.18431372549019609" green="0.56862745098039214" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
+                                </label>
+                                <label alignment="left" verticalAlignment="bottom" text="Tirana, Albania" id="sPp-yZ-RHC">
+                                    <color key="textColor" red="1" green="0.80392156862745101" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        </group>
+                        <group alignment="left" backgroundImage="w_background" contentMode="scaleAspectFill" layout="vertical" radius="0.0" id="uCw-4Q-Ouw">
+                            <items>
+                                <group width="1" height="102" alignment="center" verticalAlignment="center" backgroundImage="w_circle" contentMode="scaleAspectFit" layout="vertical" radius="2" id="oHL-K2-vkT">
+                                    <items>
+                                        <imageView width="17" height="17" alignment="center" verticalAlignment="center" image="tod-cr" contentMode="scaleAspectFit" id="9LI-Iv-CPe"/>
+                                        <label alignment="center" verticalAlignment="center" text="Clear" id="tfS-mV-W5h">
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="14"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" text="80°" id="np9-7D-esF">
+                                            <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="36"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="0.70000000000000007" colorSpace="custom" customColorSpace="sRGB"/>
+                                </group>
+                            </items>
+                            <color key="backgroundColor" red="0.1843137255" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="235" y="672"/>
+        </scene>
+        <!--w_background-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController backgroundImage="w_background" id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" numberOfLines="0" id="XkS-y5-khE">
+                            <string key="text">Weather:
+Tirana, Albania
+Sunny
+80°</string>
+                            <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1001"/>
+        </scene>
+        <!--w_background-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller backgroundImage="w_background" id="gdX-wl-uQE" customClass="NotificationController" customModule="Weather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="1" id="ijG-Gl-zw6">
+                            <items>
+                                <label alignment="center" verticalAlignment="bottom" text="Tirana, Albania" id="B3g-Aj-91M">
+                                    <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                </label>
+                                <label alignment="center" text="Today" id="tm3-ea-YTC">
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" height="100" alignment="left" backgroundImage="w_circle" contentMode="scaleAspectFit" id="naM-jA-qNa">
+                            <items>
+                                <group width="1" height="91" alignment="left" contentMode="scaleAspectFit" layout="vertical" id="ims-R3-1da">
+                                    <items>
+                                        <imageView width="17" height="17" alignment="center" verticalAlignment="bottom" image="tod-cr" contentMode="scaleAspectFit" id="o2H-6f-tVZ"/>
+                                        <label alignment="center" verticalAlignment="bottom" text="Clear" id="GDf-lN-17D">
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="14"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="bottom" text="80°" id="CDS-Qv-T08">
+                                            <color key="textColor" red="1" green="0.80392156859999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" name="ProximaNova-Light" family="Proxima Nova" pointSize="36"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="m_location" destination="B3g-Aj-91M" id="JQA-v7-ker"/>
+                        <outlet property="m_temperature" destination="CDS-Qv-T08" id="TgG-iE-wHj"/>
+                        <outlet property="m_weatherCondition" destination="GDf-lN-17D" id="9hl-Cc-oTf"/>
+                        <outlet property="m_weatherIcon" destination="o2H-6f-tVZ" id="Ekg-GC-wvL"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="511" y="1035.5"/>
+        </scene>
+    </scenes>
+</document>
