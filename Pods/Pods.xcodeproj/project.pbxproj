@@ -87,7 +87,7 @@
 		D3EAA5A07C7C048493CC605D /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		DEBC1CCC2B29737D4597452D /* DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTransform.swift; path = ObjectMapper/Transforms/DateTransform.swift; sourceTree = "<group>"; };
 		F02995222C854358F5D27E70 /* Pods-Alamofire-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Alamofire-Private.xcconfig"; sourceTree = "<group>"; };
-		F2B721788E796B3EAB849814 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F2B721788E796B3EAB849814 /* podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = podfile; path = ../podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F34E4653F01290B6873BE4EB /* Pods-Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Alamofire-dummy.m"; sourceTree = "<group>"; };
 		F556C22530EFEF6D3268D911 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = ObjectMapper/Core/Operators.swift; sourceTree = "<group>"; };
 		F8CA64A7295BDB867008AFB8 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		E8CABA251F1D76B3669B0214 = {
 			isa = PBXGroup;
 			children = (
-				F2B721788E796B3EAB849814 /* Podfile */,
+				F2B721788E796B3EAB849814 /* podfile */,
 				345D02A17A2E019473916FCA /* Frameworks */,
 				931B76B00C2F2B189ED46EC7 /* Pods */,
 				22839D69C6EABD026C3614A2 /* Products */,
