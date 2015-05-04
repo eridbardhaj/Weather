@@ -326,12 +326,11 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
+				<string>E836845D1AF6C8FF002F321D</string>
 				<string>E83684561AF6B91C002F321D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>UI</string>
 			<key>path</key>
 			<string>UI</string>
 			<key>sourceTree</key>
@@ -354,6 +353,78 @@ fi
 		<dict>
 			<key>fileRef</key>
 			<string>E83684561AF6B91C002F321D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E83684591AF6C7FB002F321D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E836845A1AF6C802002F321D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Libraries</string>
+			<key>path</key>
+			<string>Libraries</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E836845A1AF6C802002F321D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E836845B1AF6C849002F321D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SFNotificationAlert</string>
+			<key>path</key>
+			<string>SFNotificationAlert</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E836845B1AF6C849002F321D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SFSwiftNotification.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E836845C1AF6C849002F321D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E836845B1AF6C849002F321D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E836845D1AF6C8FF002F321D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AlertManager.swift</string>
+			<key>path</key>
+			<string>AlertManager.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E836845E1AF6C8FF002F321D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E836845D1AF6C8FF002F321D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -616,6 +687,8 @@ fi
 				<string>E8FBC4E51AF4226C003B435C</string>
 				<string>E85BA85C1AF4D0C10093B5F0</string>
 				<string>E8D219DD1AF043FC0021F243</string>
+				<string>E836845E1AF6C8FF002F321D</string>
+				<string>E836845C1AF6C849002F321D</string>
 				<string>E8B258AF1AEEBE9E00195F02</string>
 				<string>E801C2021AF5308A00F1FCBA</string>
 				<string>E8D219D91AF042550021F243</string>
@@ -1548,6 +1621,7 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
+				<string>E83684591AF6C7FB002F321D</string>
 				<string>E83684211AF686D9002F321D</string>
 				<string>E8B258E41AEEC5C200195F02</string>
 				<string>E8D219DF1AF04BD00021F243</string>

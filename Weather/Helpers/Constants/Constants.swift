@@ -24,12 +24,17 @@ class Constants: NSObject
         
         class func orangeColor() -> UIColor
         {
-            return UIColor(red: 47/255, green: 136/255, blue: 71/255, alpha: 1)
+            return UIColor(red: 255/255, green: 136/255, blue: 71/255, alpha: 1)
         }
         
         class func whiteColor() -> UIColor
         {
             return UIColor.whiteColor()
+        }
+        
+        class func notification_errorColor() -> UIColor
+        {
+            return UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
         }
     }
     

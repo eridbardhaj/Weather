@@ -68,6 +68,11 @@ class CustomPullToRefresh: UIControl, UIScrollViewDelegate
         
         // When activated, invoke our refresh function
         self.refreshControl?.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        
+        //Customise backgroundColor
+        refreshControl?.backgroundColor = Constants.Colors.lightBlue()
+        
+        //Add it to scrollView and add delegate
         l_scrollView.addSubview(refreshControl!)
         l_scrollView.delegate = self
     }

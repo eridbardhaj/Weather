@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class ForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EBPullToRefreshDelegate
 {
     var dataArray: [Forecast] = []    //Array which hold our forecast models
     @IBOutlet weak var tableView: UITableView!
+    
+    //PulltoRefresh
+    var pull2Refresh: CustomPullToRefresh = CustomPullToRefresh()
 
     //MARK: - VC Lifecycle
     override func viewDidLoad() {
@@ -19,6 +22,9 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
         
         //Configure tableView insets
         ConfigUtils.configureTableView(self.tableView)
+        
+        //Configure PullToRefresh
+        configurePullToRefresh()
         
         //Call API and get Results
         loadData()
@@ -65,8 +71,18 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
             else
             {
                 //Handle Error
+                AlertManager.showAlertNotification(error.description, parentController: self)
             }
         })
+    }
+    
+    func configurePullToRefresh()
+    {
+        //Init Delegate
+        pull2Refresh.pullDelegate = self
+        
+        //Add Pull to refresh
+        pull2Refresh.setupRefreshControl(self.tableView)
     }
     
     //MARK: - UITableView Delegate and Datasource methods
@@ -99,6 +115,14 @@ class ForecastViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func refreshForecastWeather(sender: AnyObject)
     {
         loadData()
+    }
+    
+    //MARK: - EBPullToRefreshDelegate
+    func pullToRefreshTriggered()
+    {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.loadData()
+        })
     }
     
     /*

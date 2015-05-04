@@ -21,9 +21,8 @@ class MainTabBarViewController: UITabBarController
 
         // Do any additional setup after loading the view.
 
-        //Keep original image not gray default
+        //Keep original image, not gray default mode
         changeTabBarItems()
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +33,7 @@ class MainTabBarViewController: UITabBarController
     //MARK: - Configuration
     func changeTabBarItems()
     {
-        var imageNames = ["tod-sun", "tod-forecast", "tod-settings"]
+        var imageNames = ["fc-today", "tod-forecast", "tod-settings"]
         var count = 0
         for imageName in imageNames
         {
@@ -42,7 +41,6 @@ class MainTabBarViewController: UITabBarController
             var image = UIImage(named: imageName)
             
             m_tabBarItem.image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-            
             count++
         }
     }

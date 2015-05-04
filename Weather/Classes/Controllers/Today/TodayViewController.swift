@@ -74,6 +74,7 @@ class TodayViewController: UIViewController, EBPullToRefreshDelegate
             else
             {
                 //Handle Error
+                AlertManager.showAlertNotification(error.description, parentController: self)
             }
         })
     }
