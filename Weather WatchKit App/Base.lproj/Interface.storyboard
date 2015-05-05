@@ -65,7 +65,20 @@
                             <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </group>
                     </items>
+                    <menu key="menu" id="O0B-S3-w2R">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="oHh-rn-cZX">
+                                <connections>
+                                    <action selector="forceTouchRefreshContent" destination="AgC-eL-Hgc" id="Xqx-xz-ccp"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
+                        <outlet property="m_currenLocation" destination="wrT-K0-7Iz" id="7A9-OA-zt2"/>
+                        <outlet property="m_weatherCondition" destination="dsy-Nf-JQb" id="Zfu-Fn-Lve"/>
+                        <outlet property="m_weatherIcon" destination="cHA-oX-PxD" id="xAa-eR-b70"/>
+                        <outlet property="m_weatherTemp" destination="fbb-Qh-OHR" id="CRb-qf-FVw"/>
                         <segue destination="iPZ-tC-qd4" kind="relationship" relationship="nextPage" id="Jvw-pl-Kbg"/>
                     </connections>
                 </controller>
@@ -115,6 +128,15 @@
                             <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         </table>
                     </items>
+                    <menu key="menu" id="HYm-xb-ROC">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="hUD-Qf-Ko0">
+                                <connections>
+                                    <action selector="forceTouchRefreshContent" destination="iPZ-tC-qd4" id="vfj-uR-hPw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="tableView" destination="jG5-22-ZsD" id="a5f-mP-J4O"/>
                     </connections>
@@ -193,7 +215,7 @@ Sunny
         <!--w_background-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller backgroundImage="w_background" id="gdX-wl-uQE" customClass="NotificationController" customModule="Weather_WatchKit_App" customModuleProvider="target">
+                <controller backgroundImage="w_background" id="gdX-wl-uQE" customClass="NotificationController" customModule="Weather_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" layout="vertical" spacing="1" id="ijG-Gl-zw6">
                             <items>

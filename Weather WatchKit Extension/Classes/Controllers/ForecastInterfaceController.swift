@@ -23,13 +23,20 @@ class ForecastInterfaceController: WKInterfaceController
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-//        self.getContentFromMainApp("get_content")
-        loadNetworkFromHere()
+        
+        //Set the controller title
+        self.setTitle("Forecast")
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        if self.dataArray.count == 0
+        {
+            //Load data from this app
+            loadNetworkFromHere()
+        }
     }
 
     override func didDeactivate() {
@@ -76,6 +83,7 @@ class ForecastInterfaceController: WKInterfaceController
         })
     }
     
+    //Load content here creates the call of mainApp from here explicitely
     func loadNetworkFromHere()
     {
         //Make the call to API
@@ -95,8 +103,15 @@ class ForecastInterfaceController: WKInterfaceController
                 else
                 {
                     //Handle Error
-                    
+                    println("Error")
                 }
         })
+    }
+    
+    //MARK: - Force Touch Actions
+    @IBAction func forceTouchRefreshContent()
+    {
+        //Reload data
+        loadNetworkFromHere()
     }
 }
