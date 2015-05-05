@@ -36,6 +36,11 @@ class Constants: NSObject
         {
             return UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
         }
+        
+        class func yellowColor() -> UIColor
+        {
+            return UIColor(red: 255/255, green: 203/255, blue: 82/255, alpha: 1)
+        }
     }
     
     class Defaults

@@ -19,6 +19,10 @@ class TodayViewModel: NSObject
     var m_pressure: String = ""
     var m_precipitation: String = ""
     
+    //Optional for iWatch
+    var m_temp: String = ""
+    var m_weatherCondition: String = ""
+    
     init(model: Weather)
     {
         //Get local data preferences
@@ -40,5 +44,9 @@ class TodayViewModel: NSObject
         m_pressure = String(format: "%.0f", model.m_pressure) + " hPa"
         m_windSpeed = String(format: "%.1f", current_lengthType.getSpeed(model.m_windSpeed)) + " \(current_lengthType.description)"
         m_currentWeatherInfo = String(format: "%.0f", current_tempType.getDegree(model.m_temperature)) + "\(current_tempType.description) | \(model.m_weather_description)"
+        
+        m_temp = String(format: "%.0f", current_tempType.getDegree(model.m_temperature)) + "°"
+        
+        m_weatherCondition = model.m_weather_description
     }
 }
