@@ -182,6 +182,12 @@
                         </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="m_currenLocation" destination="sPp-yZ-RHC" id="HJ9-5l-qUP"/>
+                        <outlet property="m_weatherCondition" destination="tfS-mV-W5h" id="tf4-9K-sXJ"/>
+                        <outlet property="m_weatherIcon" destination="9LI-Iv-CPe" id="HUT-Av-gce"/>
+                        <outlet property="m_weatherTemp" destination="np9-7D-esF" id="jdp-ns-VaA"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>
